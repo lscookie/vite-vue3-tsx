@@ -1,0 +1,60 @@
+.commonLayout {
+  height: 100%;
+  width: 100%;
+  :global(.el-container) {
+    height: 100%;
+  }
+  :global(.el-header) {
+    padding: 0px;
+  }
+  :global(.el-main) {
+    padding: 0px;
+  }
+  :global(.el-footer) {
+    padding: 0px;
+  }
+  .aside {
+    height: 100%;
+    width: 200px;
+    overflow: hidden;
+  }
+  .asideToLeft {
+    animation: menuToLeft 0.5s forwards;
+  }
+
+  .asideToRight {
+    animation: menuToRight 0.5s forwards;
+  }
+
+  .header {
+    height: 70px;
+    width: 100%;
+  }
+  .main {
+    height: calc(100% - 100px);
+    width: 100%;
+    overflow: hidden;
+  }
+  .footer {
+    height: 30px;
+    width: 100%;
+  }
+}
+
+@keyframes menuToRight {
+  0% {
+    width: 64px;
+  }
+  100% {
+    width: 200px;
+  }
+}
+
+@keyframes menuToLeft {
+  0% {
+    width: 200px;
+  }
+  100% {
+    width: 64px;
+  }
+}

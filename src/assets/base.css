@@ -1,0 +1,24 @@
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  /* 动画时间配置 */
+  /* 全局的动画时间 */
+  --animate-duration: 200ms;
+  /* 全局的延迟时间 */
+  --animate-delay: 0.1s;
+  --head-backgorund-color: #222555;
+  --head-border-color: #222555;
+  --head-padding: 0px;
+}
+
+.dashboard-head {
+  --head-backgorund-color: #5172dc;
+  --head-border-color: #5172dc;
+  --head-padding: 0px;
+  --head-text-color: #ffffff;
+  --head-text-size: 14px;
+}
