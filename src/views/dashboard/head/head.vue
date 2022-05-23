@@ -77,7 +77,7 @@
   import { useStore } from 'vuex';
   import { useRouter } from 'vue-router';
   import { computed, defineComponent, reactive, ref, toRefs, watch } from 'vue';
-  import globalSettings from './globalSettings.vue';
+  import globalSettings from './globalSettings/globalSettings.vue';
 
   export default defineComponent({
     name: 'Head',

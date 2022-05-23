@@ -5,7 +5,7 @@
         <div class="tab-pane-block">
           <div v-for="item of msgData" :key="item">
             <div class="icon-blick">
-              <myIcon :icon-type="'Avatar'"></myIcon>
+              <my-icon :icon-type="'Avatar'"></my-icon>
             </div>
             <div class="centent-block">
               <div class="title">
