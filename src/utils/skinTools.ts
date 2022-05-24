@@ -1,6 +1,5 @@
 function setStyle(element: any, styleList: any) {
   Object.keys(styleList).forEach((item: string) => {
-    console.log(item);
     element.style.setProperty(item, styleList[item]);
   });
 }
@@ -11,9 +10,19 @@ function setStyle(element: any, styleList: any) {
 
 export function updateStyle(className: string, styleList: any) {
   let dom: any = document.getElementsByClassName(className);
-  console.log(styleList);
   let length = dom.length;
   for (let i = 0; i < length; i++) {
     setStyle(dom[i], styleList);
   }
+}
+
+export function getStyleByClassName(className: string, styleName: string) {
+  let dom: any = document.getElementsByClassName(className)[0];
+  return getComputedStyle(dom).getPropertyValue(formatStyleName(styleName));
+}
+
+// 格式化class名称
+function formatStyleName(name: string) {
+  let reg = /[A-Z]/g;
+  return `--${name.replace(reg, (str: string) => `-${str.toLocaleLowerCase()}`)}`;
 }
