@@ -22,3 +22,15 @@
   --head-text-color: #ffffff;
   --head-text-size: 14px;
 }
+
+.dashboard-menu {
+  --el-menu-bg-color: #5172dc;
+  --el-fill-color-blank: var(--el-menu-bg-color);
+  --el-menu-hover-bg-color: #f2f2f3;
+  --el-menu-hover-bg-ch-color: var(--el-menu-hover-bg-color);
+  --el-menu-text-color: #ffffff;
+  --el-menu-text-ch-color: var(--el-menu-text-color);
+  --menu-border-color: #5172dc;
+  --menu-padding: 0px;
+  --menu-text-size: 14px;
+}

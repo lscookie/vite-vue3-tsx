@@ -37,95 +37,96 @@
 </template>
 
 <script lang="tsx">
-  import { defineComponent, onMounted, reactive, toRefs } from 'vue';
-  import myIcon from '@/components/icon.vue';
-  import { statusColor } from '@/utils/baseConfig';
-  export default defineComponent({
-    name: 'messageView',
-    components: { myIcon },
-    setup() {
-      const tabssObject = reactive({
-        activeName: 'msg',
-        tabsClick: () => {}
-      });
-      const msgObject = reactive({
-        msgData: [
-          { userName: '张三', msg: '666666', time: '2022-05-16 12:00' },
-          { userName: '李四', msg: '777777', time: '2022-05-16 13:00' },
-          { userName: '王五', msg: '8888888', time: '2022-05-16 14:00' },
-          { userName: '赵六', msg: '666666', time: '2022-05-16 15:00' }
-        ]
-      });
-      const taskObject = reactive({
-        taskData: [
-          { taskName: '任务一', msg: '666666', statusName: '未开始', status: 0 },
-          { taskName: '任务二', msg: '777777', statusName: '进行中', status: 1 },
-          { taskName: '任务三', msg: '8888888', statusName: '挂起', status: 2 },
-          { taskName: '任务四', msg: '666666', statusName: '已完成', status: 3 }
-        ]
-      });
+import { defineComponent, onMounted, reactive, toRefs } from "vue";
+import myIcon from "@/components/icon.vue";
+import { statusColor } from "@/utils/baseConfig";
 
-      onMounted(() => {});
-      return {
-        ...toRefs(tabssObject),
-        ...toRefs(msgObject),
-        ...toRefs(taskObject),
-        statusColor
-      };
-    }
-  });
+export default defineComponent({
+  name: "messageView",
+  components: { myIcon },
+  setup() {
+    const tabssObject = reactive({
+      activeName: "msg",
+      tabsClick: () => {},
+    });
+    const msgObject = reactive({
+      msgData: [
+        { userName: "张三", msg: "666666", time: "2022-05-16 12:00" },
+        { userName: "李四", msg: "777777", time: "2022-05-16 13:00" },
+        { userName: "王五", msg: "8888888", time: "2022-05-16 14:00" },
+        { userName: "赵六", msg: "666666", time: "2022-05-16 15:00" },
+      ],
+    });
+    const taskObject = reactive({
+      taskData: [
+        { taskName: "任务一", msg: "666666", statusName: "未开始", status: 0 },
+        { taskName: "任务二", msg: "777777", statusName: "进行中", status: 1 },
+        { taskName: "任务三", msg: "8888888", statusName: "挂起", status: 2 },
+        { taskName: "任务四", msg: "666666", statusName: "已完成", status: 3 },
+      ],
+    });
+
+    onMounted(() => {});
+    return {
+      ...toRefs(tabssObject),
+      ...toRefs(msgObject),
+      ...toRefs(taskObject),
+      statusColor,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>
-  @userImg: 30px;
-  .tabs-block {
-    width: 300px;
-    .tabs {
-      padding: 0px 10px;
-      color: #6b778c;
-      font-size: 32px;
-      font-weight: 600;
-      .tab-pane-block {
-        > div {
-          display: flex;
-          justify-content: left;
-          align-content: flex-start;
-          padding: 8px 5px;
-          border-radius: 8px;
-          &:hover {
-            background-color: aquamarine;
-          }
+@userImg: 30px;
+.tabs-block {
+  width: 300px;
+  .tabs {
+    padding: 0px 10px;
+    color: #6b778c;
+    font-size: 32px;
+    font-weight: 600;
+    .tab-pane-block {
+      > div {
+        display: flex;
+        justify-content: left;
+        align-content: flex-start;
+        padding: 8px 5px;
+        border-radius: 8px;
+        &:hover {
+          background-color: aquamarine;
         }
-        .icon-blick {
-          width: @userImg;
-          height: 50px;
-          display: flex;
-          justify-content: center;
+      }
+      .icon-blick {
+        width: @userImg;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+      }
+      .centent-block {
+        width: calc(100% - @userImg);
+      }
+      .task-centent-block {
+        width: 100%;
+      }
+      .title {
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        :global(.el-tag) {
+          border: 0px;
         }
-        .centent-block {
-          width: calc(100% - @userImg);
+        > span:last-child {
+          font-weight: 100;
+          font-size: 12px;
         }
-        .task-centent-block {
-          width: 100%;
-        }
-        .title {
-          font-size: 14px;
-          font-weight: bold;
-          display: flex;
-          justify-content: space-between;
-          :global(.el-tag) {
-            border: 0px;
-          }
-          > span:last-child {
-            font-weight: 100;
-            font-size: 12px;
-          }
-        }
-        .centent {
-          font-size: 14px;
-          font-weight: 400;
-        }
+      }
+      .centent {
+        font-size: 14px;
+        font-weight: 400;
       }
     }
   }
+}
 </style>
