@@ -1,13 +1,13 @@
 <template>
   <div class="layout-block">
-    <el-row :gutter="localProps.interval.value" class="height-full">
+    <el-row :gutter="blockPadding" class="height-full">
       <el-col
         :span="localLeftSpan"
         class="col-block"
         :style="{
-          'padding-top': `${localProps.interval.value}px`,
-          'padding-bottom': `${localProps.interval.value}px`,
-          'padding-left': `${localProps.interval.value}px`
+          'padding-top': `${blockPadding}px`,
+          'padding-bottom': `${blockPadding}px`,
+          'padding-left': `${blockPadding}px`
         }"
       >
         <div>
@@ -18,9 +18,9 @@
         :span="localRightSpan"
         class="col-block"
         :style="{
-          'padding-top': `${localProps.interval.value}px`,
-          'padding-bottom': `${localProps.interval.value}px`,
-          'padding-right': `${localProps.interval.value}px`
+          'padding-top': `${blockPadding}px`,
+          'padding-bottom': `${blockPadding}px`,
+          'padding-right': `${blockPadding}px`
         }"
       >
         <div>
@@ -32,7 +32,8 @@
 </template>
 
 <script lang="tsx">
-  import { computed, defineComponent, onMounted, reactive, toRefs } from 'vue';
+  import { computed, defineComponent, toRefs } from 'vue';
+  import { useStore } from 'vuex';
   export default defineComponent({
     name: 'Layout',
     props: {
@@ -43,14 +44,11 @@
       rightSpan: {
         type: Number,
         default: 20
-      },
-      interval: {
-        type: Number,
-        default: 20
       }
     },
     setup(props) {
       const localProps = toRefs(props);
+      const store = useStore();
       const localLeftSpan = computed(() => {
         if (
           localProps.leftSpan.value < 0 ||
@@ -71,10 +69,10 @@
         }
         return localProps.rightSpan.value;
       });
-      onMounted(() => {
-        // console.log();
-      });
-      return { localProps, localLeftSpan, localRightSpan };
+      const blockPadding = computed(() =>
+        store.state.menu.mainStyle.mainOutBlockPadding.replace(/[^\d^\.]/g, '')
+      );
+      return { localProps, localLeftSpan, localRightSpan, blockPadding };
     }
   });
 </script>
@@ -83,7 +81,7 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    background-color: #f2f2f3;
+    background-color: var(--main-out-bg-color);
     :global(.el-row) {
       margin: 0px !important;
     }
@@ -95,7 +93,7 @@
       > div:first-child {
         height: 100%;
         background: #ffffff;
-        border-radius: 10px;
+        border-radius: var(--main-block-radios);
       }
     }
   }

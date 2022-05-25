@@ -16,21 +16,35 @@
 }
 
 .dashboard-head {
+  /* 头部背景颜色 */
   --head-backgorund-color: #5172dc;
+  /* 头部文本颜色 */
+  --head-text-color: #ffffff;
   --head-border-color: #5172dc;
   --head-padding: 0px;
-  --head-text-color: #ffffff;
   --head-text-size: 14px;
 }
 
 .dashboard-menu {
+  /* 菜单背景 */
   --el-menu-bg-color: #5172dc;
   --el-fill-color-blank: var(--el-menu-bg-color);
-  --el-menu-hover-bg-color: #f2f2f3;
+  /* 菜单鼠标悬停背景颜色 */
+  --el-menu-hover-bg-color: rgba(255, 255, 255, 0.6);
   --el-menu-hover-bg-ch-color: var(--el-menu-hover-bg-color);
+  /* 菜单文本背景颜色 */
   --el-menu-text-color: #ffffff;
   --el-menu-text-ch-color: var(--el-menu-text-color);
   --menu-border-color: #5172dc;
   --menu-padding: 0px;
   --menu-text-size: 14px;
+}
+
+.dashboard-main {
+  /* 底部背景颜色 */
+  --main-out-bg-color: #f2f2f3;
+  /* 板块间隔 */
+  --main-out-block-padding: 20px;
+  /* 板块圆角 */
+  --main-block-radios: 10px;
 }

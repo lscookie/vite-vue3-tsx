@@ -8,7 +8,7 @@ axios.defaults.timeout = 30000; //超时时间
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
 let loading: any;
-let startloadingTime: number = 0;
+let startloadingTime = 0;
 
 const startLoading = () => {
   if (startloadingTime === 0) {
@@ -44,7 +44,7 @@ const httpAxios = axios.create({});
 // 请求拦截
 httpAxios.interceptors.request.use((config: AxiosRequestConfig) => {
   if (window.sessionStorage.getItem('tokenInfo')) {
-    let token = window.sessionStorage.getItem('tokenInfo');
+    const token = window.sessionStorage.getItem('tokenInfo');
     if (token) {
       // let userToken = JSON.parse(token);
       // config.headers['Authorization'] = `${userToken.token_type} ${userToken.access_token}`;

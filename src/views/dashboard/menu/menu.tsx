@@ -1,10 +1,10 @@
-import { computed, defineComponent, onMounted, ref, watch } from "vue";
-import style from "./style.module.less";
-import Icon from "@/components/icon.vue";
-import { useStore } from "vuex";
-import { useRoute, useRouter } from "vue-router";
+import { computed, defineComponent, onMounted, ref, watch } from 'vue';
+import style from './style.module.less';
+import Icon from '@/components/icon.vue';
+import { useStore } from 'vuex';
+import { useRoute, useRouter } from 'vue-router';
 export default defineComponent({
-  name: "Menu",
+  name: 'Menu',
   components: { Icon },
   setup() {
     const store = useStore();
@@ -16,56 +16,56 @@ export default defineComponent({
     const iconClolor = computed(() => store.state.menu.headStyle.headTextColor);
     const menuData = ref<Array<any>>([
       {
-        title: "表单1",
-        id: "1111",
-        icon: "Camera",
+        title: '表单1',
+        id: '1111',
+        icon: 'Camera',
         children: [
           {
-            title: "表单1-1",
-            id: "2222",
-            icon: "Burger",
-            route: "/home1",
-            children: [],
-          },
-        ],
+            title: '表单1-1',
+            id: '2222',
+            icon: 'Burger',
+            route: '/home1',
+            children: []
+          }
+        ]
       },
       {
-        title: "表单2",
-        id: "333333",
-        icon: "Calendar",
+        title: '表单2',
+        id: '333333',
+        icon: 'Calendar',
         children: [
           // { title: '表单2-1', id: '44444', icon: 'DataAnalysis', route: '/home1', children: [] },
           {
-            title: "表单2-2",
-            id: "66666",
-            icon: "DataAnalysis",
-            route: "/home2",
-            children: [],
+            title: '表单2-2',
+            id: '66666',
+            icon: 'DataAnalysis',
+            route: '/home2',
+            children: []
           },
           {
-            title: "表单2-3",
-            id: "77777",
-            icon: "DataAnalysis",
-            route: "/home",
-            children: [],
-          },
-        ],
-      },
+            title: '表单2-3',
+            id: '77777',
+            icon: 'DataAnalysis',
+            route: '/home',
+            children: []
+          }
+        ]
+      }
     ]);
 
     const formatMenuData = (data: any): Array<any> => {
-      let resultList: Array<any> = data.map((element: any) => {
-        if (element.hasOwnProperty("children") && element.children.length > 0) {
+      const resultList: Array<any> = data.map((element: any) => {
+        if (element.hasOwnProperty('children') && element.children.length > 0) {
           return (
             <el-sub-menu index={element.id}>
               {{
                 title: () => (
                   <div>
                     <Icon iconType={element.icon} color={iconClolor}></Icon>
-                    <span>{menuCollapse.value ? "" : element.title}</span>
+                    <span>{menuCollapse.value ? '' : element.title}</span>
                   </div>
                 ),
-                default: () => formatMenuData(element.children),
+                default: () => formatMenuData(element.children)
               }}
             </el-sub-menu>
           );
@@ -84,32 +84,28 @@ export default defineComponent({
       routerChange,
       () => {
         setTimeout(() => {
-          let resultList: Array<any> = [];
+          const resultList: Array<any> = [];
           updaBreadcrumb(routerChange.value, menuData.value, resultList);
           // 更新到store中
-          store.commit("SET_ROUTER_URL", resultList);
+          store.commit('SET_ROUTER_URL', resultList);
         }, 10);
       },
       {
         deep: true,
-        immediate: true,
+        immediate: true
       }
     );
 
     // 更新面包屑的数据
-    const updaBreadcrumb = (
-      path: string,
-      data: Array<any>,
-      resultList: Array<any>
-    ): any => {
+    const updaBreadcrumb = (path: string, data: Array<any>, resultList: Array<any>): any => {
       let routerList: Array<any> = [];
       data.forEach((item: any) => {
-        let result: any = {
+        const result: any = {
           title: item.title,
           children: [],
-          id: item.id,
+          id: item.id
         };
-        if (item.hasOwnProperty("children") && item.children.length > 0) {
+        if (item.hasOwnProperty('children') && item.children.length > 0) {
           routerList = updaBreadcrumb(path, item.children, resultList);
           if (routerList.length > 0) {
             result.hasChildren = true;
@@ -135,10 +131,10 @@ export default defineComponent({
         default-active="66666"
         collapse={menuCollapse.value}
         router={true}
-        class={[style.menu, "el-menu-vertical-demo", "dashboard-menu"]}
+        class={[style.menu, 'el-menu-vertical-demo', 'dashboard-menu']}
       >
         {formatMenuData(menuData.value)}
       </el-menu>
     );
-  },
+  }
 });

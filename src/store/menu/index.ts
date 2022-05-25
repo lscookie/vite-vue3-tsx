@@ -1,5 +1,4 @@
-import { updateStyle, formatStyleName } from "@/utils/skinTools";
-import { Module } from "vuex";
+import { updateStyle, formatStyleName } from '@/utils/skinTools';
 import {
   SET_MENU_STAT,
   SET_ROUTER_CHANGE,
@@ -7,12 +6,14 @@ import {
   SET_HEAD_ICON_COLOR,
   SET_HEAD_STYLE,
   SET_MENU_STYLE,
-} from "./actionType";
+  SET_MAIN_STYLE
+} from './actionType';
 
-const setStyle = (state: any, styleObject: Object, type: string) => {
+const setStyle = (state: any, styleObject: any, type: string) => {
   state[`${type}Style`] = Object.assign(state[`${type}Style`], styleObject);
-  let styleData: any = {};
-  for (let item in styleObject) {
+  const styleData: any = {};
+  for (const item in styleObject) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     styleData[formatStyleName(item)] = styleObject[item];
   }
@@ -25,24 +26,29 @@ const menu = {
     // 菜单展开和收缩
     collapse: false,
     // 当前路由
-    routerChange: "",
+    routerChange: '',
     // 面包屑路径
     routerList: [],
     // 头部icon颜色
-    headIconColor: "",
+    headIconColor: '',
     // 头部的Style变量合计
     headStyle: {
-      headBackgorundColor: "",
-      headTextColor: "",
+      headBackgorundColor: '',
+      headTextColor: ''
     },
     menuStyle: {
-      elMenuBgColor: "",
-      elMenuHoverBgColor: "",
-      elMenuTextColor: "",
+      elMenuBgColor: '',
+      elMenuHoverBgColor: '',
+      elMenuTextColor: ''
     },
+    mainStyle: {
+      mainOutBgColor: '',
+      mainOutBlockPadding: '',
+      mainBlockRadios: ''
+    }
   },
   mutations: {
-    [SET_MENU_STAT](state: any, collapse: Boolean) {
+    [SET_MENU_STAT](state: any, collapse: boolean) {
       state.collapse = collapse;
     },
     [SET_ROUTER_URL](state: any, routerList: Array<any>) {
@@ -54,15 +60,18 @@ const menu = {
     [SET_HEAD_ICON_COLOR](state: any, color: string) {
       state.headIconColor = color;
     },
-    [SET_HEAD_STYLE](state: any, styleObject: Object) {
-      setStyle(state, styleObject, "head");
+    [SET_HEAD_STYLE](state: any, styleObject: any) {
+      setStyle(state, styleObject, 'head');
     },
-    [SET_MENU_STYLE](state: any, styleObject: Object) {
-      setStyle(state, styleObject, "menu");
+    [SET_MENU_STYLE](state: any, styleObject: any) {
+      setStyle(state, styleObject, 'menu');
     },
+    [SET_MAIN_STYLE](state: any, styleObject: any) {
+      setStyle(state, styleObject, 'main');
+    }
   },
   getters: {},
-  actions: {},
+  actions: {}
 };
 
 export default menu;

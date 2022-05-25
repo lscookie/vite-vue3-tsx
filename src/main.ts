@@ -11,7 +11,7 @@ import locale from 'element-plus/es/locale/lang/zh-cn';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 
 const app = createApp(App);
-app.component('layout', Layout);
+app.component('Layout', Layout);
 app.use(ElementPlus, { locale });
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);

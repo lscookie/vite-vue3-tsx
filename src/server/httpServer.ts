@@ -11,10 +11,10 @@ const serverUrl = '/api';
  * @param err 失败时的运行函数
  * @returns
  */
-export function loading(formData: any, success?: Function, err?: Function) {
+export function loading(formData: Record<string, unknown>, success?: string, err?: any): any {
   return http.post(serverUrl + '/user/login', formData);
 }
 
-export function formUpdate(formData: any, success?: Function, err?: Function) {
+export function formUpdate(formData: Record<string, unknown>, success?: string, err?: any): any {
   return http.post(serverUrl + '/user/testform', formData);
 }

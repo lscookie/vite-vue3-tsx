@@ -39,7 +39,7 @@ export default defineComponent({
       await formRef.value.validate((valid: boolean, fields: any) => {
         if (valid) {
           // 提交请求
-          let params: any = { ...loginForm.data };
+          const params: any = { ...loginForm.data };
           params.passWord = md5(params.passWord);
           // httpServer.loading(params).then((res: any) => {
           //   if (res.err > 0) {
@@ -60,8 +60,6 @@ export default defineComponent({
     //     login();
     //   }
     // }
-
-    onMounted(() => {});
 
     return () => (
       <div class="login">

@@ -7,10 +7,10 @@
   <!-- :name="route.meta.transition ?? defaultTransition" -->
   <router-view v-slot="{ Component, route }">
     <transition
-      v-on:before-enter="(dom:any, fun:any) => addenter(dom, fun, route, 'in')"
-      v-on:after-enter="(dom:any, fun:any) => removeLeave(dom, fun, route, 'in')"
-      v-on:before-leave="(dom:any, fun:any) => addenter(dom, fun, route, 'out')"
-      v-on:after-leave="(dom:any, fun:any) => removeLeave(dom, fun, route, 'out')"
+      @before-enter="(dom:any, fun:any) => addenter(dom, fun, route, 'in')"
+      @after-enter="(dom:any, fun:any) => removeLeave(dom, fun, route, 'in')"
+      @before-leave="(dom:any, fun:any) => addenter(dom, fun, route, 'out')"
+      @after-leave="(dom:any, fun:any) => removeLeave(dom, fun, route, 'out')"
       mode="out-in"
     >
       <component :is="Component" />
