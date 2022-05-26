@@ -12,7 +12,15 @@ export default ({ mode }) =>
     base: mode === 'development' ? '/' : './',
     server: {
       host: 'localhost',
-      port: 3000
+      port: 4200,
+      // 设置代理
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
+      }
     },
     // 配置css模块化，以module结尾的样式文件，解决css全局污染等问题
     css: {
