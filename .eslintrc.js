@@ -16,10 +16,10 @@ module.exports = {
   ],
   rules: {
     'no-empty-function': 'off',
+    // 关闭函数返回值声明限制
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     // 关闭any检测，太残暴了这个
     '@typescript-eslint/no-explicit-any': ['off'],
     'vue/require-default-prop': 'off' // 修改@vue/compiler-sfc中的默认配置
-    // commonjs: true,
-    // amd: true
   }
 };
