@@ -4,7 +4,7 @@ import router from './router';
 import { createApp } from 'vue';
 import 'element-plus/dist/index.css';
 import 'assets/base.css';
-import ElementPlus from 'element-plus';
+import ElementPlus, { useGlobalConfig } from 'element-plus';
 import Layout from '@/components/layout.vue';
 import 'animate.css';
 import locale from 'element-plus/es/locale/lang/zh-cn';
@@ -19,3 +19,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.use(store);
 app.use(router);
 app.mount('#app');
+// app.config.globalProperties.$baseConfig = '';

@@ -64,7 +64,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       type: 'error'
     },
-    component: () => import('@/views/error/error')
+    component: () => import('@/views/error/404.vue')
   },
   {
     path: '/:pathMatch(.*)*',

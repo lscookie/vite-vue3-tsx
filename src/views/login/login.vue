@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-  import { onMounted, reactive, ref } from 'vue';
+  import { reactive, ref } from 'vue';
   import md5 from 'md5-ts';
   import * as httpServer from '@/server/httpServer';
   import basicUtil from 'utils/basicsUtls';
@@ -76,8 +76,6 @@
           }
         });
       };
-
-      onMounted(() => {});
 
       return {
         loginForm,

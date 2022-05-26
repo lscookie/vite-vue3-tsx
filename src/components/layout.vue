@@ -92,7 +92,9 @@
       height: 100%;
       > div:first-child {
         height: 100%;
-        background: #ffffff;
+        box-sizing: border-box;
+        padding: var(--main-block-padding);
+        background: var(--main-block-bg-color);
         border-radius: var(--main-block-radios);
       }
     }

@@ -12,7 +12,15 @@ const serverUrl = '/api';
  * @returns
  */
 export function loading(formData: Record<string, unknown>, success?: string, err?: any): any {
-  return http.post(serverUrl + '/user/login', formData);
+  return http.post(serverUrl + '/user/login', formData, {}, true);
+}
+
+export function errTest(): any {
+  return http.post(serverUrl + '/user/errtest', {}, {}, true);
+}
+
+export function getAllUser(): any {
+  return http.get(serverUrl + '/user/list', {});
 }
 
 export function formUpdate(formData: Record<string, unknown>, success?: string, err?: any): any {

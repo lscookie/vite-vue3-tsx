@@ -124,6 +124,30 @@
                 @input="styleChangeNumber('SET_MAIN_STYLE', 'mainBlockRadios', mainBlockRadios)"
               />
             </el-form-item>
+            <el-form-item label="板块内边距">
+              <el-slider
+                v-model="mainBlockPadding"
+                :min="0"
+                :max="50"
+                show-input
+                size="small"
+                @input="styleChangeNumber('SET_MAIN_STYLE', 'mainBlockPadding', mainBlockPadding)"
+              />
+            </el-form-item>
+            <el-form-item label="板块内背景">
+              <color-select
+                v-model:selectColor="myMainSeadStyle.mainBlockBgColor"
+                :color-list="colorList"
+                @selectChange="
+                  styleChange(
+                    'SET_MAIN_STYLE',
+                    'mainBlockBgColor',
+                    myMainSeadStyle.mainBlockBgColor
+                  )
+                "
+              >
+              </color-select>
+            </el-form-item>
           </el-form>
         </div>
       </div>
@@ -201,6 +225,7 @@
 
       const mainOutBlockPadding = ref(0);
       const mainBlockRadios = ref(0);
+      const mainBlockPadding = ref(0);
       onMounted(() => {
         // 初始化一些数值变量
         setTimeout(() => {
@@ -210,7 +235,9 @@
           mainBlockRadios.value = Number(
             store.state.menu.mainStyle.mainBlockRadios.replace(/[^\d^\.]/g, '')
           );
-          console.log(mainOutBlockPadding, mainBlockRadios);
+          mainBlockPadding.value = Number(
+            store.state.menu.mainStyle.mainBlockPadding.replace(/[^\d^\.]/g, '')
+          );
         }, 10);
       });
 
@@ -228,6 +255,7 @@
         styleChangeNumber,
         mainBlockRadios,
         mainOutBlockPadding,
+        mainBlockPadding,
         myHeadSeadStyle,
         myMenuSeadStyle,
         myMainSeadStyle,

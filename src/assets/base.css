@@ -47,4 +47,8 @@
   --main-out-block-padding: 20px;
   /* 板块圆角 */
   --main-block-radios: 10px;
+  /* 板块内背景颜色 */
+  --main-block-bg-color: #ffffff;
+  /* 板块内的边距 */
+  --main-block-padding: 10px;
 }

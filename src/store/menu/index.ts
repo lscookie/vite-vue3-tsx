@@ -44,7 +44,9 @@ const menu = {
     mainStyle: {
       mainOutBgColor: '',
       mainOutBlockPadding: '',
-      mainBlockRadios: ''
+      mainBlockRadios: '',
+      mainBlockBgColor: '',
+      mainBlockPadding: ''
     }
   },
   mutations: {
