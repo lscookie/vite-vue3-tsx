@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       type: 'login'
     },
-    component: () => import('@/views/login/loginx')
+    component: () => import('@/views/login/login')
   },
   {
     path: '/main',

@@ -9,8 +9,8 @@ module.exports = {
     }
   },
   extends: [
-    'plugin:@typescript-eslint/recommended', // 扩展使用 typescript 检查规则
     'plugin:vue/vue3-recommended', // 扩展使用 vue3的规范
+    'plugin:@typescript-eslint/recommended', // 扩展使用 typescript 检查规则
     'plugin:prettier/recommended' // 使用prettier接管eslint的规范
     // 'airbnb' // 使用airbnb标准，有点小问题这里先不启用
   ],
