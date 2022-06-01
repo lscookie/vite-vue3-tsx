@@ -4,7 +4,7 @@ import router from './router';
 import { createApp } from 'vue';
 import 'element-plus/dist/index.css';
 import 'assets/base.css';
-import ElementPlus, { useGlobalConfig } from 'element-plus';
+import ElementPlus from 'element-plus';
 import Layout from '@/components/layout.vue';
 import 'animate.css';
 import locale from 'element-plus/es/locale/lang/zh-cn';

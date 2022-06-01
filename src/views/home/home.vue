@@ -5,15 +5,19 @@
       <el-button @click="testerr">testerr</el-button>
       <el-button @click="getAllUserBtn">getAllUser</el-button>
     </template>
-    <template #right> 7777 </template>
+    <template #right>
+      <echarts></echarts>
+    </template>
   </layout>
 </template>
 
 <script lang="tsx">
   import { loading, errTest, getAllUser } from '@/server/httpServer';
+  import Echarts from '@/components/echarts.vue';
 
   export default {
     name: 'Home',
+    components: { Echarts },
     setup() {
       const login = async () => {
         await loading({

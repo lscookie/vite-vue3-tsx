@@ -1,4 +1,9 @@
-// 防抖函数
+/**
+ * 防抖函数
+ * @param fun 目标函数
+ * @param time 在time后触发一次
+ * @returns 返回目标函数
+ */
 export function shake(fun: any, time: number): any {
   let startTime: NodeJS.Timeout | null = null;
   return (...args: any) => {
@@ -14,7 +19,12 @@ export function shake(fun: any, time: number): any {
   };
 }
 
-// 节流函数
+/**
+ * 节流函数
+ * @param fun 目标函数
+ * @param time 在time毫秒内只执行一次
+ * @returns 返回目标函数
+ */
 export function throttle(fun: any, time: number): any {
   let startTime = 0;
   return (...args: any) => {

@@ -31,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '/home',
-        name: 'home',
+        name: 'Home',
         meta: {
           type: 'home',
           transition: 'animate__backInRight'
@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/home1',
-        name: 'home1',
+        name: 'Home1',
         meta: {
           type: 'home1',
           transition: 'animate__backInLeft'
@@ -49,7 +49,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/home2',
-        name: 'home2',
+        name: 'Home2',
         meta: {
           type: 'home2',
           transition: 'animate__backInUp'

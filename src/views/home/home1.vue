@@ -1,5 +1,5 @@
 <template>
-  <layout :leftSpan="5" :rightSpan="19">
+  <layout :left-span="5" :right-span="19">
     <template #left>
       <el-button @click="changeSpan">修改</el-button>
     </template>
@@ -18,8 +18,8 @@
   import layout from '@/components/layout.vue';
   import { ref } from 'vue';
   export default {
+    name: 'Home1',
     components: { layout },
-    name: 'home',
     setup() {
       const animationList = ref(false);
       const changeSpan = () => {

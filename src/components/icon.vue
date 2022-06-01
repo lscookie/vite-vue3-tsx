@@ -8,7 +8,7 @@
 </template>
 
 <script lang="tsx">
-  import { defineComponent, toRefs, onMounted, ref, reactive } from 'vue';
+  import { defineComponent, reactive } from 'vue';
   export default defineComponent({
     name: 'Icon',
     props: {
@@ -31,7 +31,6 @@
     },
     setup(props) {
       const propObject = reactive(props);
-      onMounted(() => {});
       return {
         propObject
       };

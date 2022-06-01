@@ -70,7 +70,7 @@
         return localProps.rightSpan.value;
       });
       const blockPadding = computed(() =>
-        store.state.menu.mainStyle.mainOutBlockPadding.replace(/[^\d^\.]/g, '')
+        Number(store.state.menu.mainStyle.mainOutBlockPadding.replace(/[^\d^\.]/g, ''))
       );
       return { localProps, localLeftSpan, localRightSpan, blockPadding };
     }

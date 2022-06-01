@@ -29,9 +29,11 @@
   import * as httpServer from '@/server/httpServer';
   import basicUtil from 'utils/basicsUtls';
   import { ElForm } from 'element-plus';
+  import { useRouter } from 'vue-router';
   export default {
     setup() {
-      const { router, msgOpen } = basicUtil();
+      const { msgOpen } = basicUtil();
+      const router = useRouter();
       const loginForm = reactive({
         data: {
           user: '',

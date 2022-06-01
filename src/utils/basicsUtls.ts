@@ -1,9 +1,6 @@
-import { useRoute, useRouter } from 'vue-router';
 import { ElMessage } from 'element-plus';
 
 export default function basicsUtil() {
-  const route = useRoute();
-  const router = useRouter();
   /**
    * 封装的elemen消息提示器
    * @param msg 需要显示的错误提示信息
@@ -16,8 +13,6 @@ export default function basicsUtil() {
     });
   };
   return {
-    route,
-    router,
     msgOpen
   };
 }

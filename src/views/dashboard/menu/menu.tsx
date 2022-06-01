@@ -1,16 +1,16 @@
 import { computed, defineComponent, onMounted, ref, watch } from 'vue';
 import style from './style.module.less';
-import Icon from '@/components/icon.vue';
+import MyIcon from '@/components/icon.vue';
 import { useStore } from 'vuex';
-import { useRoute, useRouter } from 'vue-router';
+// import { useRoute, useRouter } from 'vue-router';
 export default defineComponent({
   name: 'Menu',
-  components: { Icon },
+  components: { MyIcon },
   setup() {
     const store = useStore();
-    const router = useRouter();
+    // const router = useRouter();
     // 根据当前路由更新面包屑
-    const route = useRoute();
+    // const route = useRoute();
     const menuCollapse = computed(() => store.state.menu.collapse);
     const routerChange = computed(() => store.state.menu.routerChange);
     const iconClolor = computed(() => store.state.menu.headStyle.headTextColor);
@@ -61,7 +61,7 @@ export default defineComponent({
               {{
                 title: () => (
                   <div>
-                    <Icon iconType={element.icon} color={iconClolor}></Icon>
+                    <my-icon iconType={element.icon} color={iconClolor.value}></my-icon>
                     <span>{menuCollapse.value ? '' : element.title}</span>
                   </div>
                 ),

@@ -7,34 +7,51 @@
   <!-- :name="route.meta.transition ?? defaultTransition" -->
   <router-view v-slot="{ Component, route }">
     <transition
+      mode="out-in"
       @before-enter="(dom:any, fun:any) => addenter(dom, fun, route, 'in')"
       @after-enter="(dom:any, fun:any) => removeLeave(dom, fun, route, 'in')"
       @before-leave="(dom:any, fun:any) => addenter(dom, fun, route, 'out')"
       @after-leave="(dom:any, fun:any) => removeLeave(dom, fun, route, 'out')"
-      mode="out-in"
     >
-      <component :is="Component" />
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+      <!-- <component v-if="!route?.meta?.keep" :is="Component" /> -->
     </transition>
   </router-view>
 </template>
 
 <script lang="tsx">
-  import { ref, defineComponent } from 'vue';
+  import { ref, defineComponent, reactive } from 'vue';
   import { animationDefault } from '@/utils/baseConfig';
   export default defineComponent({
     name: 'Main',
     setup() {
       const defaultTransition = ref('scale');
-      const classList = ref<Array<string>>([]);
+      const classList = reactive<{ out: Array<string>; in: Array<string> }>({
+        out: [],
+        in: []
+      });
       const addenter = (el: any, done: any, route: any, type: string) => {
-        classList.value = ['animate__animated', `${route?.meta?.transition ?? animationDefault}`];
         if (type === 'out') {
-          classList.value.push('animation-direction');
+          classList.out = [
+            'animate__animated',
+            `${route?.meta?.transition ?? animationDefault}`,
+            // 反向动画
+            'animation-direction'
+          ];
+          el.classList.add(...classList.out);
+        } else {
+          classList.in = ['animate__animated', `${route?.meta?.transition ?? animationDefault}`];
+          el.classList.add(...classList.in);
         }
-        el.classList.add(...classList.value);
       };
       const removeLeave = (el: any, done: any, route: any, type: string) => {
-        el.classList.remove(...classList.value);
+        if (type === 'out') {
+          el.classList.remove(...classList.out);
+        } else {
+          el.classList.remove(...classList.in);
+        }
       };
       return {
         defaultTransition,
