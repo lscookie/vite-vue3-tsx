@@ -6,18 +6,18 @@
       <el-button @click="getAllUserBtn">getAllUser</el-button>
     </template>
     <template #right>
-      <echarts></echarts>
+      <visualization-echartsVue></visualization-echartsVue>
     </template>
   </layout>
 </template>
 
 <script lang="tsx">
   import { loading, errTest, getAllUser } from '@/server/httpServer';
-  import Echarts from '@/components/echarts.vue';
+  import VisualizationEchartsVue from '@/components/visualizationEcharts.vue';
 
   export default {
     name: 'Home',
-    components: { Echarts },
+    components: { VisualizationEchartsVue },
     setup() {
       const login = async () => {
         await loading({

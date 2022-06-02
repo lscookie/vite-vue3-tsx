@@ -4,12 +4,12 @@ import basicUtil from 'utils/basicsUtls';
 import { ElForm } from 'element-plus';
 import md5 from 'md5-ts';
 import './login.less';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'Login',
   setup() {
     const { msgOpen } = basicUtil();
-    const router = useRoute();
+    const router = useRouter();
     const loginForm = reactive({
       data: {
         user: '',

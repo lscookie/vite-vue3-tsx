@@ -9,6 +9,8 @@ import Layout from '@/components/layout.vue';
 import 'animate.css';
 import locale from 'element-plus/es/locale/lang/zh-cn';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
+import Colorpicker from 'colorpicker-v3';
+import 'colorpicker-v3/style.css';
 
 const app = createApp(App);
 app.component('Layout', Layout);
@@ -18,5 +20,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 app.use(store);
 app.use(router);
+app.use(Colorpicker);
 app.mount('#app');
 // app.config.globalProperties.$baseConfig = '';
