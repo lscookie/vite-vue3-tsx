@@ -3,33 +3,52 @@
 </template>
 
 <script lang="tsx">
-  import { defineComponent, onMounted, ref, toRefs } from 'vue';
+  import { defineComponent, onMounted, ref, toRefs, watch } from 'vue';
   import * as echarts from 'echarts';
+  import { EChartsType } from 'echarts';
   export default defineComponent({
     name: 'Echarts',
+    props: {
+      echartsConfig: {
+        type: Object,
+        // eslint-disable-next-line vue/require-valid-default-prop
+        default: {
+          xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              data: [120, 200, 150, 80, 70, 110, 130],
+              type: 'bar'
+            }
+          ]
+        }
+      }
+    },
     setup(props) {
       const localProps = toRefs(props);
       const echartsDom = ref(null);
-      let echartsObj = null;
+      let echartsObj: EChartsType;
+
+      watch(
+        localProps,
+        (newData: any) => {
+          console.log('newData', newData);
+          if (echartsObj) {
+            echartsObj.setOption(newData);
+          }
+        },
+        { deep: true }
+      );
+
       onMounted(() => {
         echartsObj = echarts.init(echartsDom.value as unknown as HTMLElement);
-        echartsObj.setOption({
-          title: {
-            text: 'ECharts 入门示例'
-          },
-          tooltip: {},
-          xAxis: {
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-          },
-          yAxis: {},
-          series: [
-            {
-              name: '销量',
-              type: 'bar',
-              data: [5, 20, 36, 10, 10, 20]
-            }
-          ]
-        });
+        const localProps = toRefs(props);
+        echartsObj.setOption(localProps.echartsConfig.value);
       });
       return {
         localProps,
@@ -40,7 +59,7 @@
 </script>
 <style lang="less" scoped>
   .echarts-block {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
   }
 </style>
