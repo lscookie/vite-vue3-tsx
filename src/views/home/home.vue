@@ -13,7 +13,7 @@
 
 <script lang="tsx">
   import { loading, errTest, getAllUser } from '@/server/httpServer';
-  import VisualizationEchartsVue from '@/components/visualizationEcharts.vue';
+  import VisualizationEchartsVue from '@/components/echarts/visualizationEcharts.vue';
 
   export default {
     name: 'Home',
