@@ -45,14 +45,18 @@
         { deep: true }
       );
 
+      const initEcharts = () => {
+        echartsObj.setOption(localProps.echartsConfig.value);
+      };
+
       onMounted(() => {
         echartsObj = echarts.init(echartsDom.value as unknown as HTMLElement);
-        const localProps = toRefs(props);
-        echartsObj.setOption(localProps.echartsConfig.value);
+        initEcharts();
       });
       return {
         localProps,
-        echartsDom
+        echartsDom,
+        initEcharts
       };
     }
   });
