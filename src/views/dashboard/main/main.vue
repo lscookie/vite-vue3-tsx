@@ -25,7 +25,7 @@
   import { ref, defineComponent, reactive } from 'vue';
   import { animationDefault } from '@/utils/baseConfig';
   export default defineComponent({
-    name: 'Main',
+    name: 'DashboardMain',
     setup() {
       const defaultTransition = ref('scale');
       const classList = reactive<{ out: Array<string>; in: Array<string> }>({

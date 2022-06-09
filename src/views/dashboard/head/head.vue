@@ -81,7 +81,7 @@
   import globalSettings from './globalSettings/globalSettings.vue';
 
   export default defineComponent({
-    name: 'Head',
+    name: 'DashboardHead',
     components: { myIcon, messageView, globalSettings },
     setup() {
       const store = useStore();

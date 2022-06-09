@@ -4,7 +4,7 @@ import MyIcon from '@/components/icon.vue';
 import { useStore } from 'vuex';
 // import { useRoute, useRouter } from 'vue-router';
 export default defineComponent({
-  name: 'Menu',
+  name: 'DashboardMenu',
   components: { MyIcon },
   setup() {
     const store = useStore();

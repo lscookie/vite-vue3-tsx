@@ -1,90 +1,93 @@
 <template>
   <div class="echarts-block">
     <div class="config-block">
-      <!-- 标题配置 -->
-      <el-collapse v-model="collapseActiveNames" @change="handleChange">
-        <el-collapse-item title="标题设置" name="1">
-          <el-form :label-width="'80px'">
-            <el-form-item>
-              <el-switch v-model="localConfig.title.show" active-text="显示" inactive-text="隐藏">
-              </el-switch>
-            </el-form-item>
-            <el-form-item label="标题内容">
-              <el-input v-model="localConfig.title.text"></el-input>
-            </el-form-item>
-            <el-form-item label="背景颜色">
-              <el-color-picker v-model="localConfig.title.backgroundColor"></el-color-picker>
-            </el-form-item>
-            <el-form-item label="对其方式">
-              <el-select v-model="localConfig.title.textAlign">
-                <el-option :label="'auto'" :value="'auto'"></el-option>
-                <el-option :label="'left'" :value="'left'"></el-option>
-                <el-option :label="'right'" :value="'right'"></el-option>
-                <el-option :label="'center'" :value="'center'"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="对其方式">
-              <el-select v-model="localConfig.title.textVerticalAlign">
-                <el-option :label="'auto'" :value="'auto'"></el-option>
-                <el-option :label="'top'" :value="'top'"></el-option>
-                <el-option :label="'bottom'" :value="'bottom'"></el-option>
-                <el-option :label="'middle'" :value="'middle'"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="字体颜色">
-              <el-color-picker v-model="localConfig.title.textStyle.color"></el-color-picker>
-            </el-form-item>
-            <el-form-item label="字体风格">
-              <el-select v-model="localConfig.title.textStyle.fontStyle">
-                <el-option :label="'normal'" :value="'normal'"></el-option>
-                <el-option :label="'italic'" :value="'italic'"></el-option>
-                <el-option :label="'oblique'" :value="'oblique'"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="字体宽度">
-              <el-autocomplete
-                v-model="localConfig.title.textStyle.fontWeight"
-                :fetch-suggestions="querySearch"
-                :trigger-on-focus="false"
-                clearable
-                class="inline-input w-50"
-                placeholder="Please Input"
-              />
-            </el-form-item>
-            <el-form-item label="列高">
-              <el-input-number v-model="localConfig.title.textStyle.lineHeight"></el-input-number>
-            </el-form-item>
-            <el-form-item label="标题宽度">
-              <el-input-number v-model="localConfig.title.textStyle.width"></el-input-number>
-            </el-form-item>
-            <el-form-item label="标题高度">
-              <el-input-number v-model="localConfig.title.textStyle.height"></el-input-number>
-            </el-form-item>
-            <el-form-item label="描边颜色">
-              <el-color-picker v-model="localConfig.title.textBorderColor"></el-color-picker>
-            </el-form-item>
-            <el-form-item label="描边宽度">
-              <el-input-number
-                v-model="localConfig.title.textStyle.textBorderWidth"
-              ></el-input-number>
-            </el-form-item>
-            <el-form-item label="描边类型">
-              <el-select v-model="localConfig.title.textStyle.textBorderType">
-                <el-option :label="'solid'" :value="'solid'"></el-option>
-                <el-option :label="'dashed'" :value="'dashed'"></el-option>
-                <el-option :label="'dotted'" :value="'dotted'"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="文本过长">
-              <el-select v-model="localConfig.title.textStyle.overflow">
-                <el-option :label="'截断'" :value="'truncate'"></el-option>
-                <el-option :label="'换行'" :value="'break'"></el-option>
-                <el-option :label="'强制换行'" :value="'breakAll'"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-form>
-        </el-collapse-item>
-      </el-collapse>
+      <form-tools :options="testFormOption"></form-tools>
+      <el-scrollbar>
+        <!-- 标题配置 -->
+        <el-collapse v-model="collapseActiveNames" @change="handleChange">
+          <el-collapse-item title="标题设置" name="1">
+            <el-form :label-width="'80px'">
+              <el-form-item>
+                <el-switch v-model="localConfig.title.show" active-text="显示" inactive-text="隐藏">
+                </el-switch>
+              </el-form-item>
+              <el-form-item label="标题内容">
+                <el-input v-model="localConfig.title.text"></el-input>
+              </el-form-item>
+              <el-form-item label="背景颜色">
+                <el-color-picker v-model="localConfig.title.backgroundColor"></el-color-picker>
+              </el-form-item>
+              <el-form-item label="对其方式">
+                <el-select v-model="localConfig.title.textAlign">
+                  <el-option :label="'auto'" :value="'auto'"></el-option>
+                  <el-option :label="'left'" :value="'left'"></el-option>
+                  <el-option :label="'right'" :value="'right'"></el-option>
+                  <el-option :label="'center'" :value="'center'"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="对其方式">
+                <el-select v-model="localConfig.title.textVerticalAlign">
+                  <el-option :label="'auto'" :value="'auto'"></el-option>
+                  <el-option :label="'top'" :value="'top'"></el-option>
+                  <el-option :label="'bottom'" :value="'bottom'"></el-option>
+                  <el-option :label="'middle'" :value="'middle'"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="字体颜色">
+                <el-color-picker v-model="localConfig.title.textStyle.color"></el-color-picker>
+              </el-form-item>
+              <el-form-item label="字体风格">
+                <el-select v-model="localConfig.title.textStyle.fontStyle">
+                  <el-option :label="'normal'" :value="'normal'"></el-option>
+                  <el-option :label="'italic'" :value="'italic'"></el-option>
+                  <el-option :label="'oblique'" :value="'oblique'"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="字体宽度">
+                <el-autocomplete
+                  v-model="localConfig.title.textStyle.fontWeight"
+                  :fetch-suggestions="querySearch"
+                  :trigger-on-focus="false"
+                  clearable
+                  class="inline-input w-50"
+                  placeholder="Please Input"
+                />
+              </el-form-item>
+              <el-form-item label="列高">
+                <el-input-number v-model="localConfig.title.textStyle.lineHeight"></el-input-number>
+              </el-form-item>
+              <el-form-item label="标题宽度">
+                <el-input-number v-model="localConfig.title.textStyle.width"></el-input-number>
+              </el-form-item>
+              <el-form-item label="标题高度">
+                <el-input-number v-model="localConfig.title.textStyle.height"></el-input-number>
+              </el-form-item>
+              <el-form-item label="描边颜色">
+                <el-color-picker v-model="localConfig.title.textBorderColor"></el-color-picker>
+              </el-form-item>
+              <el-form-item label="描边宽度">
+                <el-input-number
+                  v-model="localConfig.title.textStyle.textBorderWidth"
+                ></el-input-number>
+              </el-form-item>
+              <el-form-item label="描边类型">
+                <el-select v-model="localConfig.title.textStyle.textBorderType">
+                  <el-option :label="'solid'" :value="'solid'"></el-option>
+                  <el-option :label="'dashed'" :value="'dashed'"></el-option>
+                  <el-option :label="'dotted'" :value="'dotted'"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="文本过长">
+                <el-select v-model="localConfig.title.textStyle.overflow">
+                  <el-option :label="'截断'" :value="'truncate'"></el-option>
+                  <el-option :label="'换行'" :value="'break'"></el-option>
+                  <el-option :label="'强制换行'" :value="'breakAll'"></el-option>
+                </el-select>
+              </el-form-item>
+            </el-form>
+          </el-collapse-item>
+        </el-collapse>
+      </el-scrollbar>
     </div>
     <div class="echarts-show">
       <echarts ref="echartsDom" :echarts-config="localConfig"></echarts>
@@ -96,11 +99,13 @@
   import { defineComponent, reactive, ref, toRefs } from '@vue/runtime-core';
   import Echarts from '@/components/echarts/echarts.vue';
   import { watch } from 'vue';
-  import { echartsConfig, titleStyle, titleTextStyle } from './echartsModel';
+  import FormTools from '../formTools/formTools.vue';
+  import { echartsConfig, titleStyle } from './echartsModel';
+  import { fromOptionObject } from '../formTools/formToolsModel';
 
   export default defineComponent({
     name: 'VisualizationEchartsVue',
-    components: { Echarts },
+    components: { Echarts, FormTools },
     setup() {
       const echartsDom = ref();
       const collapseObject = reactive({
@@ -108,6 +113,48 @@
         handleChange: () => {
           console.log('21544');
         }
+      });
+
+      const testFormOption = reactive<fromOptionObject>({
+        lableWidth: 'auto',
+        item: {
+          test1: {
+            key: 'test1Input',
+            type: 'input',
+            label: '输入框1',
+            value: '666',
+            width: 'auto',
+            required: false,
+            disabled: false
+          },
+          test2: {
+            key: 'test2Input',
+            type: 'input',
+            label: '输入框2',
+            value: '655566',
+            width: 'auto',
+            required: false,
+            disabled: false
+          },
+          test3: {
+            key: 'test3Select',
+            type: 'select',
+            label: '选着框2',
+            value: '1',
+            width: 'auto',
+            optionList: [
+              { value: '1', label: '数据1' },
+              { value: '2', label: '数据2' }
+            ],
+            required: false,
+            disabled: false
+          }
+        },
+        reset: true,
+        submitBtnName: '提交',
+        labelPosition: 'right',
+        putout: false,
+        inline: false
       });
 
       const restaurants = ref<Array<any>>([
@@ -150,6 +197,7 @@
       return {
         localConfig,
         echartsDom,
+        testFormOption,
         querySearch,
         ...toRefs(collapseObject)
       };
@@ -169,7 +217,7 @@
       padding: 10px;
     }
     .config-block {
-      overflow: auto;
+      overflow: hidden;
       width: 40%;
     }
     .echarts-show {
