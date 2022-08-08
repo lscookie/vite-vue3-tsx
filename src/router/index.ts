@@ -55,6 +55,15 @@ const routes: Array<RouteRecordRaw> = [
           transition: 'animate__backInUp'
         },
         component: () => import('@/views/home/home2.vue')
+      },
+      {
+        path: '/formControlInfo',
+        name: 'FormControlInfo',
+        meta: {
+          type: 'formControlInfo',
+          transition: 'animate__backInUp'
+        },
+        component: () => import('@/views/control/form/index.vue')
       }
     ]
   },

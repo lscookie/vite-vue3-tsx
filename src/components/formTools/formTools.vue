@@ -95,6 +95,21 @@
         </el-input-number>
         <span class="input_after">{{ domain.company }}</span>
       </template>
+      <!-- Switch开关 -->
+      <template v-else-if="domain.type === 'switch'">
+        <el-switch
+          v-model="domain.value"
+          :disabled="domain.disabled"
+          :size="LocalOptions.inline.value ? 'medium' : 'small'"
+          :active-text="domain.openName"
+          :inactive-text="domain.closeName"
+        >
+        </el-switch>
+      </template>
+      <!-- 颜色选着器 -->
+      <template v-else-if="domain.type === 'colorPicker'">
+        <el-color-picker v-model="domain.value"></el-color-picker>
+      </template>
       <!-- 级联选择框 -->
       <template v-else-if="domain.type === 'cascader'">
         <el-cascader
@@ -197,7 +212,6 @@
           };
           // 处理input的特殊属性
           if (val.type === 'input') {
-            // 判断select的数据源
             fromItemObject.placeholder = val.placeholder ?? '';
           }
           // --------------------------------select数据处理----------------------------------------
@@ -252,6 +266,11 @@
               fromItemObject.max = undefined;
             }
             fromItemObject.company = val.company;
+          }
+          // ------------------------------switch数据处理--------------------------------------------
+          if (val.type === 'switch') {
+            fromItemObject.closeName = val.closeName ?? '';
+            fromItemObject.openName = val.openName ?? '';
           }
           // ------------------------------存入渲染的响应对象--------------------------------------------
           dynamicValidateForm.value[propName] = Object.assign({}, fromItemObject);

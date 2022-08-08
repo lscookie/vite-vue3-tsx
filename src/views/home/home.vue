@@ -14,11 +14,12 @@
 <script lang="tsx">
   import { loading, errTest, getAllUser } from '@/server/httpServer';
   import VisualizationEchartsVue from '@/components/echarts/visualizationEcharts.vue';
-
-  export default {
+  import { defineComponent, PropType } from 'vue';
+  export default defineComponent({
     name: 'Home',
     components: { VisualizationEchartsVue },
-    setup() {
+    props: {},
+    setup(props, context) {
       const login = async () => {
         await loading({
           user: '123',
@@ -50,7 +51,7 @@
         getAllUserBtn
       };
     }
-  };
+  });
 </script>
 
 <style></style>

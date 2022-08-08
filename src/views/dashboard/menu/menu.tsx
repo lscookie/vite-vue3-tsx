@@ -1,8 +1,7 @@
-import { computed, defineComponent, onMounted, ref, watch } from 'vue';
+import { computed, defineComponent, ref, watch } from 'vue';
 import style from './style.module.less';
 import MyIcon from '@/components/icon.vue';
 import { useStore } from 'vuex';
-// import { useRoute, useRouter } from 'vue-router';
 export default defineComponent({
   name: 'DashboardMenu',
   components: { MyIcon },
@@ -16,12 +15,12 @@ export default defineComponent({
     const iconClolor = computed(() => store.state.menu.headStyle.headTextColor);
     const menuData = ref<Array<any>>([
       {
-        title: '表单1',
+        title: '测试1',
         id: '1111',
         icon: 'Camera',
         children: [
           {
-            title: '表单1-1',
+            title: '测试界面1-1',
             id: '2222',
             icon: 'Burger',
             route: '/home1',
@@ -30,23 +29,37 @@ export default defineComponent({
         ]
       },
       {
-        title: '表单2',
+        title: '测试2',
         id: '333333',
         icon: 'Calendar',
         children: [
           // { title: '表单2-1', id: '44444', icon: 'DataAnalysis', route: '/home1', children: [] },
           {
-            title: '表单2-2',
+            title: '测试界面2-2',
             id: '66666',
             icon: 'DataAnalysis',
             route: '/home2',
             children: []
           },
           {
-            title: '表单2-3',
+            title: '测试界面2-3',
             id: '77777',
             icon: 'DataAnalysis',
             route: '/home',
+            children: []
+          }
+        ]
+      },
+      {
+        title: '表单控件',
+        id: 'formControl',
+        icon: 'Document',
+        children: [
+          {
+            title: '参数介绍',
+            id: 'formControlInfo',
+            icon: 'Document',
+            route: '/formControlInfo',
             children: []
           }
         ]
@@ -54,7 +67,8 @@ export default defineComponent({
     ]);
 
     const formatMenuData = (data: any): Array<any> => {
-      const resultList: Array<any> = data.map((element: any) => {
+      let resultList: Array<any> = [];
+      resultList = data.map((element: any): any => {
         if (element.hasOwnProperty('children') && element.children.length > 0) {
           return (
             <el-sub-menu index={element.id}>
@@ -128,7 +142,7 @@ export default defineComponent({
 
     return () => (
       <el-menu
-        default-active="66666"
+        default-active="77777"
         collapse={menuCollapse.value}
         router={true}
         class={[style.menu, 'el-menu-vertical-demo', 'dashboard-menu']}

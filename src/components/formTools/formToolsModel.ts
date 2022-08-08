@@ -53,6 +53,8 @@ export class formItemObject {
   min?: number;
   max?: number;
   company?: number;
+  closeName?: string;
+  openName?: string;
   constructor(
     key = '',
     type = '',
@@ -68,7 +70,9 @@ export class formItemObject {
     radioList = null,
     min = 0,
     max = 10,
-    company = 0
+    company = 0,
+    closeName = '开启',
+    openName = '关闭'
   ) {
     this.key = key;
     this.type = type;
@@ -85,5 +89,7 @@ export class formItemObject {
     this.min = min;
     this.max = max;
     this.company = company;
+    this.closeName = closeName;
+    this.openName = openName;
   }
 }

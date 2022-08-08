@@ -7,7 +7,8 @@
         :style="{
           'padding-top': `${blockPadding}px`,
           'padding-bottom': `${blockPadding}px`,
-          'padding-left': `${blockPadding}px`
+          'padding-left': `${blockPadding}px`,
+          'padding-right': localRightSpan === 0 ? `${blockPadding}px` : `${blockPadding / 2}px`
         }"
       >
         <div>
@@ -20,7 +21,8 @@
         :style="{
           'padding-top': `${blockPadding}px`,
           'padding-bottom': `${blockPadding}px`,
-          'padding-right': `${blockPadding}px`
+          'padding-right': `${blockPadding}px`,
+          'padding-left': localLeftSpan === 0 ? `${blockPadding}px` : `${blockPadding / 2}px`
         }"
       >
         <div>

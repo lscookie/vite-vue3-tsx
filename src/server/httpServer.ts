@@ -19,6 +19,16 @@ export function errTest(): any {
   return http.post(serverUrl + '/user/errtest', {}, {}, true);
 }
 
+// 表单数据获取
+export function formItemGetData(url: string, params: any): any {
+  return http.get(url, params);
+}
+
+// 表格数据获取
+export function tableGetData(url: string, params: any): any {
+  return http.get(url, params);
+}
+
 export function getAllUser(): any {
   return http.get(serverUrl + '/user/list', {});
 }
