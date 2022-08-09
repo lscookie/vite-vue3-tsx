@@ -6,7 +6,8 @@ import {
   SET_HEAD_ICON_COLOR,
   SET_HEAD_STYLE,
   SET_MENU_STYLE,
-  SET_MAIN_STYLE
+  SET_MAIN_STYLE,
+  SET_BUTTON_STYLE
 } from './actionType';
 
 const setStyle = (state: any, styleObject: any, type: string) => {
@@ -47,6 +48,14 @@ const menu = {
       mainBlockRadios: '',
       mainBlockBgColor: '',
       mainBlockPadding: ''
+    },
+    buttonStyle: {
+      btnBgColor: '',
+      btnBorderColor: '',
+      btnPadding: '',
+      btnBorderRadius: '',
+      btnMargin: '',
+      btnTextColor: ''
     }
   },
   mutations: {
@@ -70,6 +79,9 @@ const menu = {
     },
     [SET_MAIN_STYLE](state: any, styleObject: any) {
       setStyle(state, styleObject, 'main');
+    },
+    [SET_BUTTON_STYLE](state: any, styleObject: any) {
+      setStyle(state, styleObject, 'button');
     }
   },
   getters: {},

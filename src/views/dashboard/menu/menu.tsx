@@ -63,6 +63,20 @@ export default defineComponent({
             children: []
           }
         ]
+      },
+      {
+        title: '基础按钮',
+        id: 'baseButton',
+        icon: 'Mouse',
+        children: [
+          {
+            title: '基础按钮',
+            id: 'baseButtonInfo',
+            icon: 'Mouse',
+            route: '/baseButton',
+            children: []
+          }
+        ]
       }
     ]);
 

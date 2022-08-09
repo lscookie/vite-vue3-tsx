@@ -5,3 +5,4 @@ export const SET_HEAD_ICON_COLOR = 'SET_HEAD_ICON_COLOR';
 export const SET_HEAD_STYLE = 'SET_HEAD_STYLE';
 export const SET_MENU_STYLE = 'SET_MENU_STYLE';
 export const SET_MAIN_STYLE = 'SET_MAIN_STYLE';
+export const SET_BUTTON_STYLE = 'SET_BUTTON_STYLE';

@@ -64,6 +64,15 @@ const routes: Array<RouteRecordRaw> = [
           transition: 'animate__backInUp'
         },
         component: () => import('@/views/control/form/index.vue')
+      },
+      {
+        path: '/baseButton',
+        name: 'BaseButton',
+        meta: {
+          type: 'baseButton',
+          transition: 'animate__backInUp'
+        },
+        component: () => import('@/components/button/buttondemo.vue')
       }
     ]
   },

@@ -52,3 +52,18 @@
   /* 板块内的边距 */
   --main-block-padding: 10px;
 }
+
+.dashboard-button {
+  /* 背景颜色 */
+  --btn-bg-color: #f2f2f3;
+  /* 边框颜色 */
+  --btn-border-color: #dcdfe6;
+  /* 内边距间隔 */
+  --btn-padding: 20px;
+  --btn-text-color: #000;
+  /* 圆角 */
+  --btn-border-radius: 10px;
+  /* 外边距颜色 */
+  --btn-margin: 5px;
+}
+
