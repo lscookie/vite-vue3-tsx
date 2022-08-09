@@ -67,3 +67,16 @@
   --btn-margin: 5px;
 }
 
+.dashboard-table {
+  /* 鼠标移过颜色 */
+  --table-cell-hover-color: #eff3fc;
+  --table-head-background: #eef3fa;
+  --table-head-color: #000;
+  --table-head-font-weigth: 700;
+  --table-head-font-size: 16px;
+  --table-head-height: 50px;
+  --table-body-font-size: 16px;
+  --table-pagination-button-is-background: #1a5cea;
+  --table-pagination-button-background: #fff;
+  --table-pagination-margin-top: 36px;
+}

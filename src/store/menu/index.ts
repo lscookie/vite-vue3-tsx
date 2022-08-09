@@ -7,7 +7,8 @@ import {
   SET_HEAD_STYLE,
   SET_MENU_STYLE,
   SET_MAIN_STYLE,
-  SET_BUTTON_STYLE
+  SET_BUTTON_STYLE,
+  SET_TABLE_STYLE
 } from './actionType';
 
 const setStyle = (state: any, styleObject: any, type: string) => {
@@ -56,6 +57,18 @@ const menu = {
       btnBorderRadius: '',
       btnMargin: '',
       btnTextColor: ''
+    },
+    tableStyle: {
+      tableHeadBackground: '',
+      tableHeadColor: '',
+      tableHeadFontWeigth: '',
+      tableHeadFontSize: '',
+      tableHeadHeight: '',
+      tableCellHoverColor: '',
+      tableBodyFontSize: '',
+      tablePaginationButtonIsBackground: '',
+      tablePaginationButtonBackground: '',
+      tablePaginationMarginTop: ''
     }
   },
   mutations: {
@@ -82,6 +95,9 @@ const menu = {
     },
     [SET_BUTTON_STYLE](state: any, styleObject: any) {
       setStyle(state, styleObject, 'button');
+    },
+    [SET_TABLE_STYLE](state: any, styleObject: any) {
+      setStyle(state, styleObject, 'table');
     }
   },
   getters: {},

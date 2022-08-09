@@ -4,6 +4,13 @@
       ref="accountTable"
       :data="scroll ? tableData.activeData : tableData.allData"
       style="width: 100%"
+      :header-cell-style="{
+        background: headerCellStyle.tableHeadBackground,
+        color: headerCellStyle.tableHeadColor,
+        fontSize: headerCellStyle.tableHeadFontSize,
+        fontWeight: headerCellStyle.tableHeadFontWeigth,
+        height: headerCellStyle.tableHeadHeight
+      }"
       height="350"
     >
       <!-- <el-table-column width="55" fixed :render-header="getcheckbox">
@@ -83,7 +90,7 @@
 <script lang="ts">
   import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue';
   import { tableGetData } from '@/server/httpServer';
-
+  import { useStore } from 'vuex';
   export default defineComponent({
     props: {
       tabelConfig: {
@@ -101,6 +108,7 @@
       }
     },
     setup(props) {
+      const store = useStore();
       // 表单对象
       const accountTable = ref();
       // 表单滑动部分对象
@@ -273,6 +281,9 @@
         getData({}, false);
       };
 
+      const headerCellStyle = store.state.menu.tableStyle;
+      console.log('headerCellStyle', headerCellStyle);
+
       onMounted(() => {
         if (props.scroll) {
           showTablePart();
@@ -288,10 +299,42 @@
         tableData,
         getData,
         handleSizeChange,
-        handleCurrentChange
+        handleCurrentChange,
+        headerCellStyle
       };
     }
   });
 </script>
 
-<style scoped lang="less"></style>
+<style lang="less">
+  .dashboard-table {
+    .el-table {
+      font-size: var(--table-body-font-size);
+    }
+    .el-table--enable-row-hover .el-table__body tr:hover > td {
+      background-color: var(--table-cell-hover-color);
+    }
+
+    .tableHeaderStyle {
+      background-color: var(--table-head-background);
+      color: var(--table-head-color);
+      font-size: var(--table-head-font-size);
+      font-weight: var(--table-head-font-weigth);
+      height: var(--table-head-height);
+    }
+
+    el-pagination.is-background .btn-next,
+    .el-pagination.is-background .btn-prev,
+    .el-pagination.is-background .el-pager li {
+      background-color: var(--table-pagination-button-background);
+    }
+
+    .el-pagination.is-background .el-pager li:not(.is-disabled).is-active {
+      background-color: var(--table-pagination-button-is-background);
+    }
+
+    .el-pagination {
+      margin-top: var(--table-pagination-margin-top);
+    }
+  }
+</style>
