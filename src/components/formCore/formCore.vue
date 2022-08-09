@@ -39,8 +39,10 @@
           </template>
         </el-form-item>
       </el-col>
+      <el-col :span="2"><el-button @click="resetForm">重置</el-button></el-col>
+      <el-col :span="2"><el-button type="primary">查询</el-button></el-col>
+      <el-col :span="2"><el-button>导出</el-button></el-col>
     </el-row>
-    <el-button @click="resetForm">重置</el-button>
   </el-form>
 </template>
 
