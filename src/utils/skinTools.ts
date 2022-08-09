@@ -24,7 +24,7 @@ export function updateStyle(className: string, styleList: Record<string, unknown
  */
 export function getStyleByClassName(className: string, styleName: string): string {
   const dom: any = document.getElementsByClassName(className)[0];
-  return getComputedStyle(dom).getPropertyValue(formatStyleName(styleName));
+  return dom ? getComputedStyle(dom).getPropertyValue(formatStyleName(styleName)) : '';
 }
 
 // 格式化class名称
