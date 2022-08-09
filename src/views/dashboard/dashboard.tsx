@@ -28,7 +28,7 @@ export default defineComponent({
             <el-header class={dashboardStyle.header}>
               <dashboard-head></dashboard-head>
             </el-header>
-            <el-main class={[dashboardStyle.main, 'dashboard-main']}>
+            <el-main class={[dashboardStyle.main, 'dashboard-main', 'dashboard-button']}>
               <dashboard-main></dashboard-main>
             </el-main>
             <el-footer class={dashboardStyle.footer}>

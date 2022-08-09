@@ -12,7 +12,6 @@
 
 <script lang="tsx">
   import layout from '@/components/layout.vue';
-  import { ref } from 'vue';
   export default {
     name: 'Button',
     components: { layout },
