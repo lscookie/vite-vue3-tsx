@@ -55,15 +55,28 @@
 
 .dashboard-button {
   /* 背景颜色 */
-  --btn-bg-color: #f2f2f3;
+  --btn-bg-color: #1c5bea;
   /* 边框颜色 */
-  --btn-border-color: #dcdfe6;
+  --btn-border-color: #1c5bea;
   /* 内边距间隔 */
-  --btn-padding: 20px;
-  --btn-text-color: #000;
+  --btn-padding: 24px;
+  --btn-text-color: #fff;
   /* 圆角 */
-  --btn-border-radius: 10px;
+  --btn-border-radius: 5px;
   /* 外边距颜色 */
   --btn-margin: 5px;
 }
 
+.dashboard-table {
+  /* 鼠标移过颜色 */
+  --table-cell-hover-color: #eff3fc;
+  --table-head-background: #eef3fa;
+  --table-head-color: #000;
+  --table-head-font-weigth: 700;
+  --table-head-font-size: 16px;
+  --table-head-height: 50px;
+  --table-body-font-size: 16px;
+  --table-pagination-button-is-background: #1a5cea;
+  --table-pagination-button-background: #fff;
+  --table-pagination-margin-top: 36px;
+}

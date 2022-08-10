@@ -1,5 +1,5 @@
 <template>
-  <layout class="dashboard-button" :left-span="5" :right-span="19">
+  <layout :left-span="5" :right-span="19">
     <template #left>
       <el-button>按钮</el-button>
     </template>
@@ -21,13 +21,13 @@
   };
 </script>
 
-<style lang="less" scoped>
-  .el-button {
-    padding: var(--btn-padding);
-    margin: var(--btn-margin);
-    background-color: var(--btn-bg-color);
-    border-color: var(--btn-border-color);
-    border-radius: var(--btn-border-radius);
-    color: var(--btn-text-color);
-  }
+<style lang="less">
+  // .el-button {
+  //   padding: var(--btn-padding);
+  //   margin: var(--btn-margin);
+  //   background-color: var(--btn-bg-color);
+  //   border-color: var(--btn-border-color);
+  //   border-radius: var(--btn-border-radius);
+  //   color: var(--btn-text-color);
+  // }
 </style>

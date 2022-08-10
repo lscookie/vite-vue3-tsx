@@ -221,6 +221,131 @@
           </el-form>
         </div>
       </div>
+      <div class="theme-block">
+        <div class="theme-block-title"><span>表格样式</span></div>
+        <div>
+          <el-form :label-width="allLabelWidth">
+            <el-form-item label="标题背景颜色">
+              <color-select
+                v-model:selectColor="myTableSeadStyle.tableHeadBackground"
+                :color-list="colorList"
+                @selectChange="
+                  styleChange(
+                    'SET_TABLE_STYLE',
+                    'tableHeadBackground',
+                    myTableSeadStyle.tableHeadBackground
+                  )
+                "
+              >
+              </color-select>
+            </el-form-item>
+            <el-form-item label="标题字体大小">
+              <el-slider
+                v-model="tableHeadFontSize"
+                :min="0"
+                :max="50"
+                show-input
+                size="small"
+                @input="
+                  styleChangeNumber('SET_TABLE_STYLE', 'tableHeadFontSize', tableHeadFontSize)
+                "
+              />
+            </el-form-item>
+            <el-form-item label="标题高度">
+              <el-slider
+                v-model="tableHeadHeight"
+                :min="0"
+                :max="60"
+                show-input
+                size="small"
+                @input="styleChangeNumber('SET_TABLE_STYLE', 'tableHeadHeight', tableHeadHeight)"
+              />
+            </el-form-item>
+            <el-form-item label="标题加粗">
+              <el-slider
+                v-model="tableHeadFontWeigth"
+                :min="0"
+                :max="900"
+                show-input
+                size="small"
+                @input="
+                  styleChangeNumber('SET_TABLE_STYLE', 'tableHeadFontWeigth', tableHeadFontWeigth)
+                "
+              />
+            </el-form-item>
+            <el-form-item label="表格移过颜色">
+              <color-select
+                v-model:selectColor="myTableSeadStyle.tableCellHoverColor"
+                :color-list="colorList"
+                @selectChange="
+                  styleChange(
+                    'SET_TABLE_STYLE',
+                    'tableCellHoverColor',
+                    myTableSeadStyle.tableCellHoverColor
+                  )
+                "
+              >
+              </color-select>
+            </el-form-item>
+            <el-form-item label="页码激活按钮颜色">
+              <color-select
+                v-model:selectColor="myTableSeadStyle.tablePaginationButtonIsBackground"
+                :color-list="colorList"
+                @selectChange="
+                  styleChange(
+                    'SET_TABLE_STYLE',
+                    'tablePaginationButtonIsBackground',
+                    myTableSeadStyle.tablePaginationButtonIsBackground
+                  )
+                "
+              >
+              </color-select>
+            </el-form-item>
+            <el-form-item label="页码按钮颜色">
+              <color-select
+                v-model:selectColor="myTableSeadStyle.tablePaginationButtonBackground"
+                :color-list="colorList"
+                @selectChange="
+                  styleChange(
+                    'SET_TABLE_STYLE',
+                    'tablePaginationButtonBackground',
+                    myTableSeadStyle.tablePaginationButtonBackground
+                  )
+                "
+              >
+              </color-select>
+            </el-form-item>
+            <el-form-item label="表格字体大小">
+              <el-slider
+                v-model="tableBodyFontSize"
+                :min="0"
+                :max="50"
+                show-input
+                size="small"
+                @input="
+                  styleChangeNumber('SET_TABLE_STYLE', 'tableBodyFontSize', tableBodyFontSize)
+                "
+              />
+            </el-form-item>
+            <el-form-item label="页码距表格宽度">
+              <el-slider
+                v-model="tablePaginationMarginTop"
+                :min="0"
+                :max="50"
+                show-input
+                size="small"
+                @input="
+                  styleChangeNumber(
+                    'SET_TABLE_STYLE',
+                    'tablePaginationMarginTop',
+                    tablePaginationMarginTop
+                  )
+                "
+              />
+            </el-form-item>
+          </el-form>
+        </div>
+      </div>
       <!-- 界面显示 -->
       <div></div>
       <!-- 动画显示 -->
@@ -266,6 +391,7 @@
       const myMenuSeadStyle = computed(() => store.state.menu.menuStyle);
       const myMainSeadStyle = computed(() => store.state.menu.mainStyle);
       const myButtonSeadStyle = computed(() => store.state.menu.buttonStyle);
+      const myTableSeadStyle = computed(() => store.state.menu.tableStyle);
 
       const styleChange = (type: string, styleName: string, colorStr: string) => {
         let data: any = {};
@@ -297,6 +423,16 @@
       const mainOutBlockPadding = ref(0);
       const mainBlockRadios = ref(0);
       const mainBlockPadding = ref(0);
+
+      const btnPadding = ref(0);
+      const btnBorderRadius = ref(0);
+      const btnMargin = ref(0);
+
+      const tableHeadFontWeigth = ref(0);
+      const tableHeadFontSize = ref(0);
+      const tableHeadHeight = ref(0);
+      const tableBodyFontSize = ref(0);
+      const tablePaginationMarginTop = ref(0);
       onMounted(() => {
         // 初始化一些数值变量
         setTimeout(() => {
@@ -312,21 +448,8 @@
           mainBlockPadding.value = Number(
             store.state.menu.mainStyle.mainBlockPadding.replace(/[^\d^\.]/g, '')
           );
-        }, 10);
-      });
 
-      const btnPadding = ref(0);
-      const btnBorderRadius = ref(0);
-      const btnMargin = ref(0);
-      onMounted(() => {
-        // 初始化一些数值变量
-        setTimeout(() => {
-          // btnBgColor: '',
-          // btnBorderColor: '',
-          // btnPadding: '',
-          // btnBorderRadius: '',
-          // btnMargin: '',
-          // btnTextColor: ''
+          // button
           btnPadding.value = Number(
             store.state.menu.buttonStyle.btnPadding.replace(/[^\d^\.]/g, '')
           );
@@ -334,6 +457,23 @@
             store.state.menu.buttonStyle.btnBorderRadius.replace(/[^\d^\.]/g, '')
           );
           btnMargin.value = Number(store.state.menu.buttonStyle.btnMargin.replace(/[^\d^\.]/g, ''));
+
+          // table
+          tableHeadFontWeigth.value = Number(
+            store.state.menu.tableStyle.tableHeadFontWeigth.replace(/[^\d^\.]/g, '')
+          );
+          tableHeadFontSize.value = Number(
+            store.state.menu.tableStyle.tableHeadFontSize.replace(/[^\d^\.]/g, '')
+          );
+          tableHeadHeight.value = Number(
+            store.state.menu.tableStyle.tableHeadHeight.replace(/[^\d^\.]/g, '')
+          );
+          tableBodyFontSize.value = Number(
+            store.state.menu.tableStyle.tableBodyFontSize.replace(/[^\d^\.]/g, '')
+          );
+          tablePaginationMarginTop.value = Number(
+            store.state.menu.tableStyle.tablePaginationMarginTop.replace(/[^\d^\.]/g, '')
+          );
         }, 10);
       });
 
@@ -359,7 +499,13 @@
         myButtonSeadStyle,
         btnPadding,
         btnBorderRadius,
-        btnMargin
+        btnMargin,
+        myTableSeadStyle,
+        tableHeadFontSize,
+        tableHeadHeight,
+        tableHeadFontWeigth,
+        tablePaginationMarginTop,
+        tableBodyFontSize
       };
     }
   });

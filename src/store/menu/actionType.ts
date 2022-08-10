@@ -6,3 +6,4 @@ export const SET_HEAD_STYLE = 'SET_HEAD_STYLE';
 export const SET_MENU_STYLE = 'SET_MENU_STYLE';
 export const SET_MAIN_STYLE = 'SET_MAIN_STYLE';
 export const SET_BUTTON_STYLE = 'SET_BUTTON_STYLE';
+export const SET_TABLE_STYLE = 'SET_TABLE_STYLE';
