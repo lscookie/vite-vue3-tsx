@@ -1,6 +1,13 @@
 <!--颜色，没有ID和name-->
 <template>
-  <el-color-picker v-model="value" :size="size" show-alpha> </el-color-picker>
+  <el-color-picker
+    :id="'c' + keyName + formItemMeta.columnId"
+    v-model="value"
+    :name="'c' + formItemMeta.columnId"
+    :size="size"
+    show-alpha
+  >
+  </el-color-picker>
 </template>
 
 <script lang="ts">

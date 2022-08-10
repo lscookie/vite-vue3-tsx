@@ -39,9 +39,27 @@
           </template>
         </el-form-item>
       </el-col>
-      <el-col :span="2"><el-button @click="resetForm">重置</el-button></el-col>
-      <el-col :span="2"><el-button type="primary">查询</el-button></el-col>
-      <el-col :span="2"><el-button>导出</el-button></el-col>
+      <el-col
+        v-if="local_props.formJson.value?.reset"
+        :span="local_props.formJson.value?.reset?.span ?? 2"
+        ><el-button @click="resetForm">
+          {{ local_props.formJson.value?.reset?.label ?? '重置' }}
+        </el-button></el-col
+      >
+      <el-col
+        v-if="local_props.formJson.value?.select"
+        :span="local_props.formJson.value?.select?.span ?? 2"
+        ><el-button type="primary" @click="selectForm">
+          {{ local_props.formJson.value?.select?.label ?? '查询' }}
+        </el-button></el-col
+      >
+      <el-col
+        v-if="local_props.formJson.value?.putOut"
+        :span="local_props.formJson.value?.putOut?.span ?? 2"
+        ><el-button @click="putOutForm">
+          {{ local_props.formJson.value?.putOut?.label ?? '导出' }}
+        </el-button></el-col
+      >
     </el-row>
   </el-form>
 </template>
@@ -77,7 +95,7 @@
         default: () => {}
       }
     },
-    emits: ['resetForm'],
+    emits: ['resetForm', 'selectForm', 'putOutForm'],
     setup(props, context) {
       // 获取表单对象
       const formControl = ref(null);
@@ -209,7 +227,25 @@
         for (let key in formModel) {
           formModel[key] = defaultModelStr[key];
         }
+        if (local_props.formJson.value?.reset?.backFun) {
+          local_props.formJson.value.reset.backFun();
+        }
         context.emit('resetForm', '');
+      };
+      // 表单查询
+      const selectForm = () => {
+        if (local_props.formJson.value?.select?.backFun) {
+          local_props.formJson.value.select.backFun(formModel);
+        }
+        context.emit('selectForm', formModel);
+      };
+
+      // 导出
+      const putOutForm = () => {
+        if (local_props.formJson.value?.putOut?.backFun) {
+          local_props.formJson.value.putOut.backFun(formModel);
+        }
+        context.emit('putOutForm', formModel);
       };
 
       onMounted(() => {
@@ -226,7 +262,9 @@
         // 函数
         setFormModel,
         getFormItemNode,
-        resetForm
+        resetForm,
+        selectForm,
+        putOutForm
       };
     }
   });

@@ -1,7 +1,7 @@
 <!--单选组-->
 <template>
   <el-radio-group
-    :id="'c' + formItemMeta.columnId"
+    :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
     :size="size"

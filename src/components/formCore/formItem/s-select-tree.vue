@@ -1,7 +1,7 @@
 <!--下拉单选-->
 <template>
   <el-tree-select
-    :id="'c' + formItemMeta.columnId"
+    :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
     :size="size"

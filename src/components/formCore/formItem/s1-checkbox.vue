@@ -1,7 +1,7 @@
 <!--勾选框-->
 <template>
   <el-checkbox
-    :id="'c' + formItemMeta.columnId"
+    :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
     :size="size"

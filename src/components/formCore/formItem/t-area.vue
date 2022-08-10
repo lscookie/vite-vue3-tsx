@@ -1,7 +1,7 @@
 <!--文本域，没有清空按钮-->
 <template>
   <el-input
-    :id="'c' + formItemMeta.columnId"
+    :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     type="textarea"
     :name="'c' + formItemMeta.columnId"

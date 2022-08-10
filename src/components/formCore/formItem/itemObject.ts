@@ -111,6 +111,10 @@ type formItem = {
    * 日期控件控件专用配置，格式化时间
    */
   extend?: extendType;
+  /**
+   * 多行文本专用配置，显示行数
+   */
+  rows?: number;
 };
 
 class formItemObject implements formItem {
@@ -197,6 +201,15 @@ export interface colOrderType {
 }
 
 /**
+ * 表单按钮组对象
+ */
+type formbuttonType = {
+  label?: string;
+  span?: number;
+  backFun?: itemControllerFun;
+};
+
+/**
  * formJson对象的类型
  */
 export interface formJsonType {
@@ -228,4 +241,10 @@ export interface formJsonType {
    * 表单验证配置信息
    */
   ruleMeta?: any;
+  /**
+   * 表单按钮组
+   */
+  select?: formbuttonType;
+  reset?: formbuttonType;
+  putOut?: formbuttonType;
 }

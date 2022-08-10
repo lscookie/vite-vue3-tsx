@@ -2,7 +2,7 @@
 <template>
   <el-rate
     v-bind="$attrs"
-    :id="'c' + formItemMeta.columnId"
+    :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     class="my-rate"
     :name="'c' + formItemMeta.columnId"

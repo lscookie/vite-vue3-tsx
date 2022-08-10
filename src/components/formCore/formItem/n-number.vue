@@ -1,7 +1,7 @@
 <!--数字-->
 <template>
   <el-input-number
-    :id="'c' + formItemMeta.columnId"
+    :id="'c' + keyName + formItemMeta.columnId"
     v-bind="$attrs"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
