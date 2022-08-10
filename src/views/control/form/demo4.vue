@@ -1,17 +1,25 @@
 <template>
   <div class="slot-block">
     <formCore ref="formDemo1" :form-json="formDemoJson4"> </formCore>
+    <div class="item-show-bottom">
+      <el-button link @click="CodeShow = !CodeShow"> 代码</el-button>
+    </div>
+    <CodeComponent v-show="CodeShow" :code="codeblock" :height="600"></CodeComponent>
   </div>
 </template>
 <script lang="tsx">
   import { formJsonType } from '@/components/formCore/formItem/itemObject';
   import formCore from '@/components/formCore/formCore.vue';
-  import { defineComponent, reactive } from 'vue';
+  import { defineComponent, reactive, ref } from 'vue';
+  import CodeComponent from '../codeMirror.vue';
+  import { code4 } from './code';
 
   export default defineComponent({
     name: 'Demo4',
-    components: { formCore },
+    components: { formCore, CodeComponent },
     setup() {
+      const CodeShow = ref(false);
+      const codeblock = ref(code4);
       const formDemoJson4: formJsonType = reactive({
         columnsNumber: 3,
         labelWidth: 'auto',
@@ -19,7 +27,7 @@
         colOrder: {
           text1: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '011',
               label: '姓名',
               controlType: 'text',
               isClear: false,
@@ -33,7 +41,7 @@
           },
           text2: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '012',
               label: 'text1',
               controlType: 'text',
               isClear: false,
@@ -47,7 +55,7 @@
           },
           text3: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '013',
               label: 'text2',
               controlType: 'text',
               isClear: false,
@@ -59,7 +67,7 @@
           },
           text4: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '014',
               label: 'text4',
               controlType: 'text',
               isClear: false,
@@ -74,11 +82,13 @@
         ruleMeta: {}
       });
       return {
+        CodeShow,
+        codeblock,
         formDemoJson4
       };
     }
   });
 </script>
 <style scoped lang="less">
-  @import url('../controlStyle.module.less');
+  @import url('../controlStyle.less');
 </style>

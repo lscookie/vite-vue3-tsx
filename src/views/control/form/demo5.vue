@@ -7,17 +7,25 @@
         </el-input>
       </template>
     </formCore>
+    <div class="item-show-bottom">
+      <el-button link @click="CodeShow = !CodeShow"> 代码</el-button>
+    </div>
+    <CodeComponent v-show="CodeShow" :code="codeblock" :height="600"></CodeComponent>
   </div>
 </template>
 <script lang="tsx">
   import { formJsonType } from '@/components/formCore/formItem/itemObject';
   import formCore from '@/components/formCore/formCore.vue';
   import { defineComponent, reactive, ref } from 'vue';
+  import { code5 } from './code';
+  import CodeComponent from '../codeMirror.vue';
 
   export default defineComponent({
     name: 'Demo5',
-    components: { formCore },
+    components: { formCore, CodeComponent },
     setup() {
+      const CodeShow = ref(false);
+      const codeblock = ref(code5);
       const formDemo5 = ref();
       const inputValue = ref('');
       const formDemoJson5: formJsonType = reactive({
@@ -27,7 +35,7 @@
         colOrder: {
           text1: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '015',
               label: '姓名',
               controlType: 'text',
               isClear: false,
@@ -41,7 +49,7 @@
           },
           testSlot: {
             formItemMeta: {
-              columnId: '106',
+              columnId: '016',
               label: '插槽测试',
               controlType: '',
               isClear: false,
@@ -60,11 +68,13 @@
       return {
         inputValue,
         formDemo5,
-        formDemoJson5
+        formDemoJson5,
+        CodeShow,
+        codeblock
       };
     }
   });
 </script>
 <style scoped lang="less">
-  @import url('../controlStyle.module.less');
+  @import url('../controlStyle.less');
 </style>

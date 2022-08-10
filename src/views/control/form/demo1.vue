@@ -5,17 +5,25 @@
       <el-slider v-model="formDemoJson1.columnsNumber" :min="1" :max="10"></el-slider>
     </div>
     <formCore ref="formDemo1" :form-json="formDemoJson1"> </formCore>
+    <div class="item-show-bottom">
+      <el-button link @click="CodeShow = !CodeShow"> 代码</el-button>
+    </div>
+    <CodeComponent v-show="CodeShow" :code="codeblock" :height="600"></CodeComponent>
   </div>
 </template>
 <script lang="tsx">
   import { formJsonType } from '@/components/formCore/formItem/itemObject';
   import formCore from '@/components/formCore/formCore.vue';
-  import { defineComponent, reactive } from 'vue';
+  import { defineComponent, reactive, ref } from 'vue';
+  import CodeComponent from '../codeMirror.vue';
+  import { code1 } from './code';
 
   export default defineComponent({
     name: 'Demo1',
-    components: { formCore },
+    components: { formCore, CodeComponent },
     setup() {
+      const CodeShow = ref(false);
+      const codeblock = ref(code1);
       const formDemoJson1: formJsonType = reactive({
         columnsNumber: 2,
         labelWidth: 'auto',
@@ -23,7 +31,7 @@
         colOrder: {
           text1: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '001',
               label: '姓名',
               controlType: 'text',
               isClear: false,
@@ -36,7 +44,7 @@
           },
           text2: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '002',
               label: 'text1',
               controlType: 'text',
               isClear: false,
@@ -49,7 +57,7 @@
           },
           text3: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '003',
               label: 'text2',
               controlType: 'text',
               isClear: false,
@@ -61,7 +69,7 @@
           },
           text4: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '004',
               label: 'text4',
               controlType: 'text',
               isClear: false,
@@ -73,14 +81,17 @@
           }
         },
         linkageMeta: {},
-        ruleMeta: {}
+        ruleMeta: {},
+        button: {}
       });
       return {
-        formDemoJson1
+        formDemoJson1,
+        CodeShow,
+        codeblock
       };
     }
   });
 </script>
 <style scoped lang="less">
-  @import url('../controlStyle.module.less');
+  @import url('../controlStyle.less');
 </style>

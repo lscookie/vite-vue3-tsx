@@ -9,17 +9,25 @@
       </el-select>
     </div>
     <formCore ref="formDemo1" :form-json="formDemoJson3"> </formCore>
+    <div class="item-show-bottom">
+      <el-button link @click="CodeShow = !CodeShow"> 代码</el-button>
+    </div>
+    <CodeComponent v-show="CodeShow" :code="codeblock" :height="600"></CodeComponent>
   </div>
 </template>
 <script lang="tsx">
   import { formJsonType } from '@/components/formCore/formItem/itemObject';
   import formCore from '@/components/formCore/formCore.vue';
-  import { defineComponent, reactive } from 'vue';
+  import { defineComponent, reactive, ref } from 'vue';
+  import { code3 } from './code';
+  import CodeComponent from '../codeMirror.vue';
 
   export default defineComponent({
     name: 'Demo2',
-    components: { formCore },
+    components: { formCore, CodeComponent },
     setup() {
+      const CodeShow = ref(false);
+      const codeblock = ref(code3);
       const formDemoJson3: formJsonType = reactive({
         columnsNumber: 1,
         labelWidth: 'auto',
@@ -27,7 +35,7 @@
         colOrder: {
           default: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '007',
               label: 'default',
               controlType: 'text',
               isClear: false,
@@ -41,7 +49,7 @@
           },
           small: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '008',
               label: 'small',
               controlType: 'text',
               isClear: false,
@@ -55,7 +63,7 @@
           },
           large: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '009',
               label: 'large',
               controlType: 'text',
               isClear: false,
@@ -68,7 +76,7 @@
           },
           test: {
             formItemMeta: {
-              columnId: '100',
+              columnId: '110',
               label: 'test',
               controlType: 'text',
               isClear: false,
@@ -83,11 +91,13 @@
         ruleMeta: {}
       });
       return {
-        formDemoJson3
+        formDemoJson3,
+        CodeShow,
+        codeblock
       };
     }
   });
 </script>
 <style scoped lang="less">
-  @import url('../controlStyle.module.less');
+  @import url('../controlStyle.less');
 </style>
