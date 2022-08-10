@@ -55,14 +55,14 @@
 
 .dashboard-button {
   /* 背景颜色 */
-  --btn-bg-color: #f2f2f3;
+  --btn-bg-color: #1c5bea;
   /* 边框颜色 */
-  --btn-border-color: #dcdfe6;
+  --btn-border-color: #1c5bea;
   /* 内边距间隔 */
-  --btn-padding: 20px;
-  --btn-text-color: #000;
+  --btn-padding: 24px;
+  --btn-text-color: #fff;
   /* 圆角 */
-  --btn-border-radius: 10px;
+  --btn-border-radius: 5px;
   /* 外边距颜色 */
   --btn-margin: 5px;
 }
