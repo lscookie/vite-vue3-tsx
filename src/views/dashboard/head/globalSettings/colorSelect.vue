@@ -1,21 +1,24 @@
 <template>
-  <el-select v-model="color" @change="ColorChange">
-    <el-option v-for="item of lcoalProps.colorList.value" :key="item.color" :value="item.color">
-      <div class="color-select-block">
-        {{ item.color }}
-        <div
-          class="color-div-block option-color-block"
-          :style="{ 'background-color': item.color }"
-        ></div>
-      </div>
-    </el-option>
-  </el-select>
-  <div class="color-div-block show-color-block" :style="{ 'background-color': color }"></div>
+  <div class="color-select-out">
+    <el-select v-model="color" @change="ColorChange">
+      <el-option v-for="item of lcoalProps.colorList.value" :key="item.color" :value="item.color">
+        <div class="color-select-block">
+          {{ item.color }}
+          <div
+            class="color-div-block option-color-block"
+            :style="{ 'background-color': item.color }"
+          ></div>
+        </div>
+      </el-option>
+    </el-select>
+    <div class="color-div-block show-color-block" :style="{ 'background-color': color }"></div>
+  </div>
 </template>
 
 <script lang="tsx">
-  import { defineComponent, onMounted, ref, toRefs, watch } from 'vue';
-
+  import { defineComponent, PropType, ref, toRefs, watch } from 'vue';
+  type colorType = { color: string };
+  type colorListType = Array<colorType> | null;
   export default defineComponent({
     name: 'ColorSelect',
     props: {
@@ -24,8 +27,8 @@
         default: ''
       },
       colorList: {
-        type: Array,
-        default: () => []
+        type: Object as PropType<colorListType>,
+        default: null
       }
     },
     emits: ['selectChange', 'update:selectColor'],
@@ -43,7 +46,6 @@
         },
         { immediate: true }
       );
-      onMounted(() => {});
       return {
         ColorChange,
         color,
@@ -62,9 +64,13 @@
   .option-color-block {
     background-color: aqua;
   }
-  .show-color-block {
+  .color-select-out {
     position: relative;
-    right: 50px;
+  }
+  .show-color-block {
+    position: absolute;
+    right: 30px;
+    top: 8px;
   }
   .color-div-block {
     border-radius: 4px;

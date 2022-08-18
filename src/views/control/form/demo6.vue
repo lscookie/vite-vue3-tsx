@@ -1,12 +1,8 @@
 <template>
   <div class="slot-block">
-    <div class="item-show-block">
-      <label>columnsNumber</label>
-      <el-slider v-model="formDemoJson1.columnsNumber" :min="1" :max="10"></el-slider>
-    </div>
-    <formCore ref="formDemo1" :form-json="formDemoJson1"> </formCore>
+    <formCore ref="formDemo6" :form-json="formDemoJson6"> </formCore>
     <div class="item-show-bottom">
-      <el-button link type="primary" @click="CodeShow = !CodeShow"> 代码</el-button>
+      <el-button link @click="CodeShow = !CodeShow"> 代码</el-button>
     </div>
     <CodeComponent v-show="CodeShow" :code="codeblock" :height="600"></CodeComponent>
   </div>
@@ -15,23 +11,24 @@
   import { formJsonType } from '@/components/formCore/formItem/itemObject';
   import formCore from '@/components/formCore/formCore.vue';
   import { defineComponent, reactive, ref } from 'vue';
+  import { code6 } from './code';
   import CodeComponent from '../codeMirror.vue';
-  import { code1 } from './code';
 
   export default defineComponent({
-    name: 'Demo1',
+    name: 'Demo6',
     components: { formCore, CodeComponent },
     setup() {
       const CodeShow = ref(false);
-      const codeblock = ref(code1);
-      const formDemoJson1: formJsonType = reactive({
-        columnsNumber: 2,
+      const codeblock = ref(code6);
+      const formDemo6 = ref();
+      const formDemoJson6: formJsonType = reactive({
+        columnsNumber: 3,
         labelWidth: 'auto',
         size: 'default',
         colOrder: {
           text1: {
             formItemMeta: {
-              columnId: '001',
+              columnId: '015',
               label: '姓名',
               controlType: 'text',
               isClear: false,
@@ -39,53 +36,51 @@
               labelWidth: 'auto'
             },
             colCount: 1,
-            defaultValue: '',
+            defaultValue: '张三',
             placeholder: '请输入姓名'
           },
           text2: {
             formItemMeta: {
-              columnId: '002',
-              label: 'text1',
+              columnId: '016',
+              label: '姓名',
               controlType: 'text',
               isClear: false,
-              title: 'text1',
+              title: '姓名',
               labelWidth: 'auto'
             },
             colCount: 1,
-            defaultValue: '',
-            placeholder: '请输入text1'
+            defaultValue: '张三',
+            placeholder: '请输入姓名'
           },
-          text3: {
+          select1: {
             formItemMeta: {
-              columnId: '003',
-              label: 'text2',
-              controlType: 'text',
+              columnId: '017',
+              label: '联动测试',
+              controlType: 'select',
               isClear: false,
-              title: 'text2'
+              title: '姓名',
+              labelWidth: 'auto',
+              optionList: [
+                { label: '张三', value: 0 },
+                { label: '李四', value: 1 },
+                { label: '王五', value: 2 }
+              ]
             },
             colCount: 1,
-            defaultValue: '',
-            placeholder: '请输入text2'
-          },
-          text4: {
-            formItemMeta: {
-              columnId: '004',
-              label: 'text4',
-              controlType: 'text',
-              isClear: false,
-              title: 'text4'
-            },
-            colCount: 1,
-            defaultValue: '',
-            placeholder: '请输入text4'
+            defaultValue: '0'
           }
         },
-        linkageMeta: {},
-        ruleMeta: {},
-        button: {}
+        linkageMeta: {
+          select1: {
+            0: { changeValue: { text1: '姓名' }, showCol: ['text1', 'text2', 'select1'] },
+            1: { changeValue: { text1: '李四' }, showCol: ['text2', 'select1'] },
+            2: { changeValue: { text1: '张三' }, showCol: ['text1', 'select1'] }
+          }
+        }
       });
       return {
-        formDemoJson1,
+        formDemo6,
+        formDemoJson6,
         CodeShow,
         codeblock
       };

@@ -1,12 +1,6 @@
 <template>
   <div class="slot-block">
-    <formCore ref="formDemo5" :form-json="formDemoJson5">
-      <template #testSlot>
-        <el-input v-model="inputValue" @change="formDemo5.setFormModel('checkbox1', inputValue)">
-          <template #prepend>我是插槽类容</template>
-        </el-input>
-      </template>
-    </formCore>
+    <formCore ref="formDemo8" :form-json="formDemoJson8" @putOutForm="formPutOut"> </formCore>
     <div class="item-show-bottom">
       <el-button link @click="CodeShow = !CodeShow"> 代码</el-button>
     </div>
@@ -17,25 +11,24 @@
   import { formJsonType } from '@/components/formCore/formItem/itemObject';
   import formCore from '@/components/formCore/formCore.vue';
   import { defineComponent, reactive, ref } from 'vue';
-  import { code5 } from './code';
+  import { code8 } from './code';
   import CodeComponent from '../codeMirror.vue';
 
   export default defineComponent({
-    name: 'Demo5',
+    name: 'Demo8',
     components: { formCore, CodeComponent },
     setup() {
       const CodeShow = ref(false);
-      const codeblock = ref(code5);
-      const formDemo5 = ref();
-      const inputValue = ref('');
-      const formDemoJson5: formJsonType = reactive({
+      const codeblock = ref(code8);
+      const formDemo8 = ref();
+      const formDemoJson8: formJsonType = reactive({
         columnsNumber: 3,
         labelWidth: 'auto',
         size: 'default',
         colOrder: {
           text1: {
             formItemMeta: {
-              columnId: '015',
+              columnId: '020',
               label: '姓名',
               controlType: 'text',
               isClear: false,
@@ -45,31 +38,28 @@
             colCount: 1,
             defaultValue: '张三',
             placeholder: '请输入姓名'
-          },
-          testSlot: {
-            formItemMeta: {
-              columnId: '016',
-              label: '插槽测试',
-              controlType: '',
-              isClear: false,
-              title: '别名',
-              labelWidth: 'auto'
-            },
-            hasSlot: true,
-            size: 'small',
-            colCount: 1,
-            defaultValue: '1'
           }
         },
-        linkageMeta: {},
-        ruleMeta: {}
+        reset: {
+          backFun: () => {
+            window.alert('表单的回调函数触发！');
+          }
+        },
+        select: {
+          label: '提交',
+          span: 2
+        },
+        putOut: {}
       });
+      const formPutOut = () => {
+        window.alert('表单导出函数触发！');
+      };
       return {
-        inputValue,
-        formDemo5,
-        formDemoJson5,
+        formDemo8,
+        formDemoJson8,
         CodeShow,
-        codeblock
+        codeblock,
+        formPutOut
       };
     }
   });

@@ -16,9 +16,9 @@
         :key="'form_' + ctrId"
         :span="formColSpan[ctrId]"
       >
+        <!-- :rules="local_props.formJson.value?.ruleMeta[ctrId] ?? []" -->
         <el-form-item
           v-show="itemShowCol[ctrId]"
-          :rules="local_props.formJson.value.ruleMeta[ctrId] ?? []"
           :label-width="item.formItemMeta.labelWidth ?? ''"
           :label="item.formItemMeta.label"
           :prop="ctrId + ''"
@@ -28,12 +28,13 @@
             <slot :name="ctrId" :value="formModel">插槽内容缺失</slot>
           </template>
           <template v-else>
+            {{ item }}
             <component
               :is="getFormItemNode(item.formItemMeta.controlType)"
               :key-name="ctrId"
               :model="formModel"
-              v-bind="item"
               :size="item?.size ?? local_props.formJson.value.size"
+              v-bind.prop="item"
             >
             </component>
           </template>
@@ -172,31 +173,33 @@
       // 设置表单联动配置
       const setLinkageMeta = (data: any, keyName: string) => {
         // 配置显示col部分
-        if (local_props.formJson.value.linkageMeta[keyName][data]?.showCol) {
-          for (let key in itemShowCol) {
-            if (local_props.formJson.value.linkageMeta[keyName][data].showCol.includes(key)) {
-              itemShowCol[key] = true;
-            } else {
-              itemShowCol[key] = false;
+        if (local_props.formJson.value.linkageMeta) {
+          if (local_props.formJson.value.linkageMeta[keyName][data]?.showCol) {
+            for (let key in itemShowCol) {
+              if (local_props.formJson.value.linkageMeta[keyName][data]?.showCol?.includes(key)) {
+                itemShowCol[key] = true;
+              } else {
+                itemShowCol[key] = false;
+              }
             }
           }
-        }
-        // 配置赋值部分
-        if (local_props.formJson.value.linkageMeta[keyName][data]?.changeValue) {
-          for (let key in local_props.formJson.value.linkageMeta[keyName][data].changeValue) {
-            if (formModel.hasOwnProperty(key)) {
-              formModel[key] =
-                local_props.formJson.value.linkageMeta[keyName][data].changeValue[key];
+          // 配置赋值部分
+          if (local_props.formJson.value.linkageMeta[keyName][data]?.changeValue) {
+            for (let key in local_props.formJson.value.linkageMeta[keyName][data]?.changeValue) {
+              if (formModel.hasOwnProperty(key)) {
+                formModel[key] =
+                  local_props.formJson.value.linkageMeta[keyName][data]?.changeValue[key];
+              }
             }
           }
-        }
-        // 重置表单验证
-        if (!fristValid.value) {
-          nextTick(() => {
-            setTimeout(() => {
-              formValidate();
-            }, 10);
-          });
+          // 重置表单验证
+          if (!fristValid.value) {
+            nextTick(() => {
+              setTimeout(() => {
+                formValidate();
+              }, 10);
+            });
+          }
         }
       };
       // 初始化表单联动配置
@@ -234,18 +237,29 @@
       };
       // 表单查询
       const selectForm = () => {
-        if (local_props.formJson.value?.select?.backFun) {
-          local_props.formJson.value.select.backFun(formModel);
-        }
-        context.emit('selectForm', formModel);
+        if (!formControl.value) return;
+        (formControl.value as any)?.validate((valid: boolean) => {
+          if (valid) {
+            if (local_props.formJson.value?.select?.backFun) {
+              local_props.formJson.value.select.backFun(formModel);
+            }
+            context.emit('selectForm', formModel);
+          }
+        });
       };
 
       // 导出
       const putOutForm = () => {
-        if (local_props.formJson.value?.putOut?.backFun) {
-          local_props.formJson.value.putOut.backFun(formModel);
-        }
-        context.emit('putOutForm', formModel);
+        // 添加表单验证
+        if (!formControl.value) return;
+        (formControl.value as any)?.validate((valid: boolean) => {
+          if (valid) {
+            if (local_props.formJson.value?.putOut?.backFun) {
+              local_props.formJson.value.putOut.backFun(formModel);
+            }
+            context.emit('putOutForm', formModel);
+          }
+        });
       };
 
       onMounted(() => {

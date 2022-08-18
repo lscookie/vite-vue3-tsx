@@ -4,35 +4,24 @@
       <el-scrollbar height="780px">
         <div class="flex-column info-block">
           <div class="flex-column">
-            <h id="form-控件说明" class="title title1">
-              控件说明
-              <a href="#form-控件说明" aria-hidden="true"></a>
+            <h id="form-表单项说明" class="title title1">
+              表单项说明
+              <a href="#form-表单项说明" aria-hidden="true"></a>
             </h>
             <label>
-              此表单控件是一个在element-plus组件库中表单控件的基础上二次封装的配置式的表单组件，致力于解决项目中表单快速构建和快速复用的问题。
+              表单项是表单功能的实际实现部分,在后期功能拓展中只需要添加这部分的功能即可。
             </label>
-            <div class="important-block level-1">
-              <label>
-                控件拥有以下特点：<br />
-                1.全配置式，通过配置文件就能复刻相同功能的表单，复用极其方便。 <br />
-                2.易拓展，可以任意封装表单插件，添加插件文件即可，不需要修改表单控件主体，方便后续迭代升级。<br />
-                3.灵活性高，支持任意数量的插槽，满足特殊情况下定制化表单的需求。<br />
-              </label>
-            </div>
             <br />
-            <h id="form-控件属性" class="title title2">
-              控件属性
-              <a href="#form-控件属性" aria-hidden="true"></a>
+            <h id="form-input" class="title title2">
+              Input-输入框
+              <a href="#form-Input" aria-hidden="true"></a>
             </h>
-          </div>
-          <div class="flex-column">
             <label>
               <h id="form-布局" class="title title3">布局</h>
               <label class="attr-improtant">columnsNumber</label>
               类型：number
             </label>
             <label> 用来定义表单横向布局列数的属性。 </label>
-            <Demo1></Demo1>
           </div>
           <div class="flex-column">
             <label>
@@ -213,7 +202,6 @@ formDemo5.setFormModel('checkbox1',inputValue)
 
 <script lang="tsx">
   import CodeComponent from '../codeMirror.vue';
-  import Demo1 from './demo1.vue';
   import Demo2 from './demo2.vue';
   import Demo3 from './demo3.vue';
   import Demo4 from './demo4.vue';
@@ -223,8 +211,8 @@ formDemo5.setFormModel('checkbox1',inputValue)
   import Demo8 from './demo8.vue';
   import Layout from '@/components/layout.vue';
   export default {
-    name: 'FormControl',
-    components: { CodeComponent, Demo1, Demo2, Demo3, Demo4, Demo5, Demo6, Layout, Demo7, Demo8 },
+    name: 'FormItem',
+    components: { CodeComponent, Demo2, Demo3, Demo4, Demo5, Demo6, Layout, Demo7, Demo8 },
     setup() {
       const code4 = `
 { 

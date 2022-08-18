@@ -63,14 +63,14 @@
 </script>
 
 <style lang="less">
-  .el-button {
-    padding: 19px var(--btn-padding);
-    margin: var(--btn-margin);
-    background-color: var(--btn-bg-color) !important;
-    border-color: var(--btn-border-color) !important;
-    border-radius: var(--btn-border-radius);
-    color: var(--btn-text-color);
-  }
+  // .el-button {
+  //   padding: 19px var(--btn-padding);
+  //   margin: var(--btn-margin);
+  //   background-color: var(--btn-bg-color) !important;
+  //   border-color: var(--btn-border-color) !important;
+  //   border-radius: var(--btn-border-radius);
+  //   color: var(--btn-text-color);
+  // }
   .animation-direction {
     animation-direction: reverse;
   }

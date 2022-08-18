@@ -1,3 +1,4 @@
+import { FormItemRule, FormRules } from 'element-plus';
 import { PropType } from 'vue';
 
 /**
@@ -153,6 +154,7 @@ export interface itemPropsType {
   size?: sizeType;
   placeholder?: string;
   hasSlot?: boolean;
+  [index: string]: any;
 }
 
 export const itemProps = {
@@ -222,7 +224,7 @@ export interface formJsonType {
    */
   labelWidth?: number | string;
   /**
-   * 空间尺寸
+   * 控件尺寸
    */
   size?: sizeType;
   /**
@@ -236,15 +238,38 @@ export interface formJsonType {
   /**
    * 表单项的联动配置信息
    */
-  linkageMeta?: any;
+  linkageMeta?: linkageMetaObj;
   /**
    * 表单验证配置信息
    */
-  ruleMeta?: any;
+  ruleMeta?: ruleMetaType;
   /**
    * 表单按钮组
    */
   select?: formbuttonType;
   reset?: formbuttonType;
   putOut?: formbuttonType;
+}
+
+export interface linkageMeta {
+  showCol?: Array<string | number>;
+  changeValue: changeValueType;
+}
+
+export interface changeValueType {
+  [index: string]: string | number | Array<any>;
+}
+
+/**
+ * linkageMeta,表单联动配置
+ */
+export interface linkageMetaObj {
+  [index: string]: { [propName: string]: linkageMeta };
+}
+
+/**
+ * 表单验证对象
+ */
+export interface ruleMetaType {
+  [index: string]: FormItemRule | FormItemRule[];
 }

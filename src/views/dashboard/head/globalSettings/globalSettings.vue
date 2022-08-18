@@ -150,7 +150,7 @@
           </el-form>
         </div>
       </div>
-      <div class="theme-block">
+      <!-- <div class="theme-block">
         <div class="theme-block-title"><span>按钮样式</span></div>
         <div>
           <el-form :label-width="allLabelWidth">
@@ -345,7 +345,7 @@
             </el-form-item>
           </el-form>
         </div>
-      </div>
+      </div> -->
       <!-- 界面显示 -->
       <div></div>
       <!-- 动画显示 -->

@@ -97,7 +97,9 @@
             },
             colCount: 1,
             defaultValue: '',
-            placeholder: '多行文本'
+            placeholder: '多行文本',
+            formatter: (value: any) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+            parser: (value: any) => value.replace(/\$\s?|(,*)/g, '')
           },
           color1: {
             formItemMeta: {

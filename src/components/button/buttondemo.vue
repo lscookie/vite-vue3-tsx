@@ -2,6 +2,7 @@
   <layout :left-span="5" :right-span="19">
     <template #left>
       <el-button>按钮</el-button>
+      <el-button type="primary">primary</el-button>
     </template>
     <template #right>
       <el-button>短按钮</el-button>

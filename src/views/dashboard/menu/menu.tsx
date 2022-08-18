@@ -61,6 +61,13 @@ export default defineComponent({
             icon: 'Document',
             route: '/formControlInfo',
             children: []
+          },
+          {
+            title: '表单项配置',
+            id: 'formItemInfo',
+            icon: 'Document',
+            route: '/formItemInfo',
+            children: []
           }
         ]
       },

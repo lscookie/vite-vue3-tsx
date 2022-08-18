@@ -1,7 +1,8 @@
 <!--单行文本-->
 <template>
+  {{ $attrs }}
   <el-input
-    v-bind="$attrs"
+    v-bind="$props"
     :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
