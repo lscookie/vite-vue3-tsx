@@ -31,8 +31,6 @@
               columnId: '015',
               label: '姓名',
               controlType: 'text',
-              isClear: false,
-              title: '姓名',
               labelWidth: 'auto'
             },
             colCount: 1,
@@ -44,8 +42,6 @@
               columnId: '016',
               label: '姓名',
               controlType: 'text',
-              isClear: false,
-              title: '姓名',
               labelWidth: 'auto'
             },
             colCount: 1,
@@ -57,8 +53,6 @@
               columnId: '017',
               label: '联动测试',
               controlType: 'select',
-              isClear: false,
-              title: '姓名',
               labelWidth: 'auto',
               optionList: [
                 { label: '张三', value: 0 },

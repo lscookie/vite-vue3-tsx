@@ -4,6 +4,7 @@
     :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
+    v-bind="$attrs"
     :size="size"
     :data="localOptionList"
     :check-strictly="formItemMeta.checkStrictly"

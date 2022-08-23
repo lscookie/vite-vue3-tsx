@@ -1,15 +1,13 @@
 <!--单行文本-->
 <template>
-  {{ $attrs }}
   <el-input
-    v-bind="$props"
+    v-bind="$attrs"
     :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
-    :clearable="formItemMeta.isClear"
     :size="size"
-    :prefix-icon="''"
-    :suffix-icon="''"
+    :prefix-icon="$props?.prefixIcon"
+    :suffix-icon="$props?.suffixIcon"
     @blur="run"
     @change="run"
     @clear="run"

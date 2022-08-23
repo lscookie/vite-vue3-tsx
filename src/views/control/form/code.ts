@@ -17,8 +17,6 @@ export const code1 = `
           columnId: '100',
           label: '姓名',
           controlType: 'text',
-          isClear: false,
-          title: '姓名',
           labelWidth: 'auto'
         },
         colCount: 1,
@@ -30,8 +28,6 @@ export const code1 = `
           columnId: '100',
           label: 'text1',
           controlType: 'text',
-          isClear: false,
-          title: 'text1',
           labelWidth: 'auto'
         },
         colCount: 1,
@@ -43,8 +39,6 @@ export const code1 = `
           columnId: '100',
           label: 'text2',
           controlType: 'text',
-          isClear: false,
-          title: 'text2'
         },
         colCount: 1,
         defaultValue: '',
@@ -54,9 +48,7 @@ export const code1 = `
         formItemMeta: {
           columnId: '100',
           label: 'text4',
-          controlType: 'text',
-          isClear: false,
-          title: 'text4'
+          controlType: 'text'
         },
         colCount: 1,
         defaultValue: '',
@@ -90,9 +82,7 @@ const formDemoJson2: formJsonType = reactive({
         formItemMeta: {
           columnId: '100',
           label: 'text2',
-          controlType: 'text',
-          isClear: false,
-          title: 'text2'
+          controlType: 'text'
         },
         colCount: 1,
         defaultValue: '',
@@ -103,8 +93,6 @@ const formDemoJson2: formJsonType = reactive({
           columnId: '100',
           label: '姓名',
           controlType: 'text',
-          isClear: false,
-          title: '姓名',
           labelWidth: 'auto'
         },
         colCount: 1,
@@ -139,8 +127,6 @@ const formDemoJson3: formJsonType = reactive({
         columnId: '100',
         label: 'default',
         controlType: 'text',
-        isClear: false,
-        title: '姓名',
         labelWidth: 'auto'
       },
       size: 'default',
@@ -153,8 +139,6 @@ const formDemoJson3: formJsonType = reactive({
         columnId: '100',
         label: 'small',
         controlType: 'text',
-        isClear: false,
-        title: 'text1',
         labelWidth: 'auto'
       },
       size: 'small',
@@ -166,9 +150,7 @@ const formDemoJson3: formJsonType = reactive({
       formItemMeta: {
         columnId: '100',
         label: 'large',
-        controlType: 'text',
-        isClear: false,
-        title: 'text2'
+        controlType: 'text'
       },
       size: 'large',
       colCount: 1,
@@ -179,9 +161,7 @@ const formDemoJson3: formJsonType = reactive({
       formItemMeta: {
         columnId: '100',
         label: 'test',
-        controlType: 'text',
-        isClear: false,
-        title: 'text4'
+        controlType: 'text'
       },
       colCount: 1,
       defaultValue: '',
@@ -207,8 +187,6 @@ const formDemoJson4: formJsonType = reactive({
         columnId: '100',
         label: '姓名',
         controlType: 'text',
-        isClear: false,
-        title: '姓名',
         labelWidth: 'auto'
       },
       size: 'small',
@@ -221,8 +199,6 @@ const formDemoJson4: formJsonType = reactive({
         columnId: '100',
         label: 'text1',
         controlType: 'text',
-        isClear: false,
-        title: 'text1',
         labelWidth: 'auto'
       },
       size: 'large',
@@ -234,9 +210,7 @@ const formDemoJson4: formJsonType = reactive({
       formItemMeta: {
         columnId: '100',
         label: 'text2',
-        controlType: 'text',
-        isClear: false,
-        title: 'text2'
+        controlType: 'text'
       },
       colCount: 3,
       defaultValue: '',
@@ -246,9 +220,7 @@ const formDemoJson4: formJsonType = reactive({
       formItemMeta: {
         columnId: '100',
         label: 'text4',
-        controlType: 'text',
-        isClear: false,
-        title: 'text4'
+        controlType: 'text'
       },
       colCount: 1,
       defaultValue: '',
@@ -282,8 +254,6 @@ const formDemoJson5: formJsonType = reactive({
         columnId: '100',
         label: '姓名',
         controlType: 'text',
-        isClear: false,
-        title: '姓名',
         labelWidth: 'auto'
       },
       colCount: 1,
@@ -295,8 +265,6 @@ const formDemoJson5: formJsonType = reactive({
         columnId: '106',
         label: '插槽测试',
         controlType: '',
-        isClear: false,
-        title: '别名',
         labelWidth: 'auto'
       },
       hasSlot: true,
@@ -325,8 +293,6 @@ const formDemoJson6: formJsonType = reactive({
         columnId: '015',
         label: '姓名',
         controlType: 'text',
-        isClear: false,
-        title: '姓名',
         labelWidth: 'auto'
       },
       colCount: 1,
@@ -338,8 +304,6 @@ const formDemoJson6: formJsonType = reactive({
         columnId: '016',
         label: '姓名',
         controlType: 'text',
-        isClear: false,
-        title: '姓名',
         labelWidth: 'auto'
       },
       colCount: 1,
@@ -351,8 +315,6 @@ const formDemoJson6: formJsonType = reactive({
         columnId: '017',
         label: '联动测试',
         controlType: 'select',
-        isClear: false,
-        title: '姓名',
         labelWidth: 'auto',
         optionList: [
           { label: '张三', value: 0 },
@@ -392,8 +354,6 @@ const formDemoJson7: formJsonType = reactive({
         columnId: '020',
         label: '姓名',
         controlType: 'text',
-        isClear: false,
-        title: '姓名',
         labelWidth: 'auto'
       },
       colCount: 1,
@@ -427,8 +387,6 @@ export const code8 = `
           columnId: '020',
           label: '姓名',
           controlType: 'text',
-          isClear: false,
-          title: '姓名',
           labelWidth: 'auto'
         },
         colCount: 1,

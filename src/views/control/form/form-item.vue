@@ -11,188 +11,96 @@
             <label>
               表单项是表单功能的实际实现部分,在后期功能拓展中只需要添加这部分的功能即可。
             </label>
+            <label>
+              <h class="title title3">常规属性列表</h>
+            </label>
+            <label>常规属性是指每个表单项配置都有的通用属性</label>
+            <el-table :data="routineTableData" style="width: 100%">
+              <el-table-column prop="attr" label="属性名" width="230" />
+              <el-table-column prop="note" label="说明" min-width="320" />
+              <el-table-column prop="type" label="类型" width="180" />
+            </el-table>
             <br />
+          </div>
+          <div class="flex-column">
             <h id="form-input" class="title title2">
               Input-输入框
               <a href="#form-Input" aria-hidden="true"></a>
+              <label> controlType： text </label>
             </h>
             <label>
-              <h id="form-布局" class="title title3">布局</h>
-              <label class="attr-improtant">columnsNumber</label>
-              类型：number
-            </label>
-            <label> 用来定义表单横向布局列数的属性。 </label>
-          </div>
-          <div class="flex-column">
-            <label>
-              <h id="form-标签的长度" class="title title3">标签的长度</h>
-              <label class="attr-improtant">labelWidth</label>
-              类型：string
-              <br />
-              默认是自适应
-              <label class="attr-improtant">auto</label>
-              ,当表单项有自己的labelWidth属性时,表单项的labelWidth会覆盖form中的labelWidth。</label
-            >
-            <Demo2></Demo2>
-          </div>
-          <div class="flex-column">
-            <label>
-              <h id="form-表单控件默认尺寸" class="title title3">表单控件默认尺寸</h>
-              <label class="attr-improtant">size</label>
-              类型：string
-            </label>
-            <label>
-              默认为
-              <label class="attr-improtant">default</label>
-              ,目前有'small、default、large'三种尺寸可选，当表单项有自己的size属性时,以表单项的size会覆盖form的配置
-            </label>
-            <Demo3></Demo3>
-          </div>
-          <div class="flex-column">
-            <label>
-              <h id="form-表单项的详细配置" class="title title3">表单项的详细配置</h>
-              <label class="attr-improtant">colOrder</label>
-              类型：itemPropsType类型的对象，key就是表单中各项的prop值
-            </label>
-            <label>
-              itemPropsType类型包含以下数据：
-              <br />
-              <CodeComponent :code="code4"> </CodeComponent>
-            </label>
-            <label>
-              这其中比较复杂的是
-              <label class="attr-improtant">formItemMeta</label>
-              表单项的详细配置，在后面各个表单控件中再详细展开介绍。
+              由于
+              <label class="attr-improtant">复合输入框</label>
+              需要添加插槽才能实现，目前通过配置没有办法简化插槽部分的配置，所以需要用到复合输入框的地方请直接使用
               <label class="attr-improtant">hasSlot</label>
-              插槽以及
-              <label class="attr-improtant">select</label>
-              <label class="attr-improtant">reset</label>
-              <label class="attr-improtant">putOut</label>
-              这三个表单内置按钮在下面用案例专门解释。
-            </label>
-            <label> 先介绍其它常规属性，案例如下： </label>
-            <div class="important-block level-2">
-              <label>
-                <label class="attr-improtant">size</label>
-                缺失时会以
-                <label class="attr-improtant">formJson</label>
-                中的size为准，有值时此处size的会覆盖掉前者。
-              </label>
-              <label>
-                <label class="attr-improtant">colCount</label>
-                默认为1，当此处的
-                <label class="attr-improtant">colCount</label>
-                大于
-                <label class="attr-improtant">formJson</label>
-                中的
-                <label class="attr-improtant">columnsNumber</label>
-                时，本项控件会占据一行。
-              </label>
-              <label>
-                <label class="attr-improtant">defaultValue</label>
-                默认为''，这里的默认值就是各个表单控件初始化和重置后的值。
-              </label>
-            </div>
-            <Demo4></Demo4>
-            <label>
-              <h id="form-hasSlot" class="title title3">插槽</h>
-              <label class="attr-improtant">hasSlot</label>
-              类型：boole
+              属性
             </label>
             <label>
-              hasSlot属性,高度封装的控件必定不会太灵活，为了解决复杂多变的表单需求，这里运用插槽的方式解决这些未知的问题。
+              <h class="title title3">非常规属性列表</h>
             </label>
-            <Demo5></Demo5>
-            <div class="important-block level-2">
-              <label>
-                这里需要注意的是如果插槽部分需要用到表单验证功能，又或者要用到表单联动的功能，就需要把插槽的值同步给表单，
-                本例中是：
-              </label>
-              <CodeComponent
-                :code="`
-formDemo5.setFormModel('checkbox1',inputValue)
-表单对象.setFormModel('控件的key',插槽部分的值)。
-                `"
-              ></CodeComponent>
-              <label>
-                如果插槽部分不需要使用表单验证和表单联动功能，那么在获取表单的时候拼接插槽部分的数据即可。
-              </label>
-              <label>
-                使用
-                <label class="attr-improtant">hasSlot</label>
-                属性后，配置中的size、defaultValue、placeholder等属性都会失效
-              </label>
-            </div>
-          </div>
-          <div class="flex-column">
-            <label>
-              <h id="form-表单项联动配置" class="title title3">表单项联动配置</h>
-              <label class="attr-improtant">linkageMeta</label>
-              类型：linkageMetaObj
-            </label>
-            <label>
-              目前表单联动支持修改其它项的显示、隐藏、以及值的修改。下面时配置的基本结构：
-            </label>
-            <CodeComponent
-              :code="`
-{
-  表单项key: {
-    表单项值：{
-      // 控制表单项的显示和隐藏，数组中存放要显示的表单项key。
-      showCol: [表单项key];
-      // 修改其它表单项的值。
-      changeValue: {
-        表单项key： 值
-      };
-    }
-  }
-}
-                `"
-            ></CodeComponent>
-            <label>
-              在下面的例子中，我们使用selece来控制前面两个input输入框的显示、隐藏、参数值的改变
-            </label>
-            <Demo6></Demo6>
-          </div>
-          <div class="flex-column">
-            <label>
-              <h id="form-表单验证配置" class="title title3">表单验证配置</h>
-              <label class="attr-improtant">ruleMeta</label>
-              类型：ruleMetaType
-            </label>
-            <label>
-              表单验证的格式和element-plus表单验证的配置一摸一样。下面给一个简单的demo。
-            </label>
-            <Demo7></Demo7>
-          </div>
-          <div class="flex-column">
-            <label>
-              <h id="form-表单内置按钮配置" class="title title3">表单内置按钮配置</h>
-              <label class="attr-improtant">select, reset, putOut</label>
-              类型：formbuttonType
-            </label>
-            <label> 目前表单内置了三个按钮，分别是重置、查询、和导出按钮 </label>
-            <el-table :data="buttonTableData" style="width: 100%">
-              <el-table-column prop="attr" label="属性名" width="180" />
-              <el-table-column prop="note" label="说明" width="180" />
-              <el-table-column prop="type" label="类型" width="180" />
-              <el-table-column prop="fun" label="响应事件" />
-            </el-table>
-            <label> formbuttonTyp类型则包含以下对象 </label>
-            <el-table :data="formbuttonTypTableData" style="width: 100%">
+            <el-table :data="inputTableData" style="width: 100%">
               <el-table-column prop="attr" label="属性名" width="180" />
               <el-table-column prop="note" label="说明" min-width="360" />
               <el-table-column prop="type" label="类型" width="180" />
             </el-table>
-            <Demo8></Demo8>
+            <br />
+            <div class="important-block level-1">
+              <label>
+                到这里你会发现这里的配置和element-plus中的用法基本一致？
+                是的为了让控件更佳灵活，我确实是这么做的，所以element-plus中控件属性基本都可以配置在这里实现想要的功能。目前封装的所有控件都有这个特点。</label
+              >
+            </div>
+            <FormItemDemo1></FormItemDemo1>
           </div>
           <div class="flex-column">
-            <h id="form-表单配置项属性" class="title title3">表单配置项属性</h>
-            <el-table :data="formTableData" style="width: 100%">
+            <h id="form-Area" class="title title2">
+              Area-输入框
+              <a href="#form-Area" aria-hidden="true"></a>
+              <label> controlType： area </label>
+            </h>
+            <label>
+              <h class="title title3">非常规属性列表</h>
+            </label>
+            <el-table :data="areaTableData" style="width: 100%">
               <el-table-column prop="attr" label="属性名" width="180" />
               <el-table-column prop="note" label="说明" min-width="360" />
-              <el-table-column prop="type" label="类型" width="180" />
+              <el-table-column prop="type" label="类型" width="240" />
             </el-table>
+            <br />
+            <div class="important-block level-2">
+              <label>
+                当
+                <label class="attr-improtant">autosize</label>
+                和
+                <label class="attr-improtant">rows</label>
+                同时使用时，
+                <label class="attr-improtant"> autosize </label>
+                会覆盖掉
+                <label class="attr-improtant"> rows </label>
+                的配置。
+              </label>
+            </div>
+            <FormItemDemo2></FormItemDemo2>
+          </div>
+          <div class="flex-column">
+            <h id="form-switch" class="title title2">
+              switch-开关
+              <a href="#form-switch" aria-hidden="true"></a>
+              <label> controlType： switch </label>
+            </h>
+            <label>
+              <h class="title title3">非常规属性列表</h>
+            </label>
+            <el-table :data="switchTableData" style="width: 100%">
+              <el-table-column prop="attr" label="属性名" width="180" />
+              <el-table-column prop="note" label="说明" min-width="360" />
+              <el-table-column prop="type" label="类型" width="240" />
+            </el-table>
+            <br />
+            <div class="important-block level-1">
+              <label> 同时支持el-switch的其它一些属性，可以自行探索优化 </label>
+            </div>
+            <FormItemDemo3></FormItemDemo3>
           </div>
         </div>
       </el-scrollbar>
@@ -201,159 +109,118 @@ formDemo5.setFormModel('checkbox1',inputValue)
 </template>
 
 <script lang="tsx">
-  import CodeComponent from '../codeMirror.vue';
-  import Demo2 from './demo2.vue';
-  import Demo3 from './demo3.vue';
-  import Demo4 from './demo4.vue';
-  import Demo5 from './demo5.vue';
-  import Demo6 from './demo6.vue';
-  import Demo7 from './demo7.vue';
-  import Demo8 from './demo8.vue';
   import Layout from '@/components/layout.vue';
+  import FormItemDemo1 from './form-item-demo1.vue';
+  import FormItemDemo2 from './form-item-demo2.vue';
+  import FormItemDemo3 from './form-item-demo3.vue';
+  import { ref } from 'vue';
   export default {
     name: 'FormItem',
-    components: { CodeComponent, Demo2, Demo3, Demo4, Demo5, Demo6, Layout, Demo7, Demo8 },
+    components: { Layout, FormItemDemo1, FormItemDemo2, FormItemDemo3 },
     setup() {
-      const code4 = `
-{ 
-  // 表单项的详细配置
-  formItemMeta: formItem;
-  // 占的格栅数量
-  colCount: number;
-  // 默认值
-  defaultValue?: any;
-  // 表单元素的size
-  size?: sizeType;
-  // inpiut等选项的提示信息
-  placeholder?: string;
-  // 是否使用插槽
-  hasSlot?: boolean; 
-}
-      `;
-      const buttonTableData = [
+      const inputTableData = ref([
         {
-          attr: 'select',
-          note: '表单内置的选择按钮',
-          type: 'formbuttonType',
-          fun: 'resetForm: (formModel)=> {}'
-        },
-        {
-          attr: 'reset',
-          note: '表单内置的重置按钮',
-          type: 'formbuttonType',
-          fun: 'selectForm: ()=> {}'
-        },
-        {
-          attr: 'putOut',
-          note: '表单内置的导出按钮',
-          type: 'formbuttonType',
-          fun: 'putOutForm: (formModel)=> {}'
-        }
-      ];
-      const formbuttonTypTableData = [
-        {
-          attr: 'label',
-          note: '按钮上需要显示的字段',
+          attr: 'placeholder',
+          note: 'input输入提示',
           type: 'string'
         },
         {
-          attr: 'span',
-          note: '按钮所占的布局列数，1--12之间，默认为1',
-          type: 'number'
+          attr: 'clearable',
+          note: '是否显示清空图标',
+          type: 'boolean'
         },
         {
-          attr: 'backFun',
-          note: '按钮触发事件后的回调函数',
-          type: 'itemControllerFun'
+          attr: 'prefixIcon',
+          note: '前缀图标',
+          type: 'boolean'
+        },
+        {
+          attr: 'suffixIcon',
+          note: '后缀图标',
+          type: 'boolear'
         }
-      ];
-      const formTableData = [
+      ]);
+      const routineTableData = ref([
         {
-          attr: 'columnsNumber',
-          note: '表单格栅分列数量',
-          type: 'number'
-        },
-        {
-          attr: 'labelWidth',
-          note: '表单label的宽度',
-          type: 'number | string'
+          attr: 'disabled',
+          note: '是否禁用',
+          type: 'boolean'
         },
         {
           attr: 'size',
-          note: '控件尺寸small、defualt、large',
-          type: 'sizeType'
+          note: '控件尺寸',
+          type: 'small, default, large'
         },
         {
-          attr: 'colOrder',
-          note: '表单项的详细配置信息',
-          type: 'colOrderType'
+          attr: 'colCount',
+          note: '控件占位列数',
+          type: 'number'
         },
         {
-          attr: 'linkageMeta',
-          note: '表单项的联动配置信息',
-          type: 'linkageMetaObj'
-        },
-        {
-          attr: 'ruleMeta',
-          note: '表单验证配置信息',
-          type: 'ruleMetaType'
-        },
-        {
-          attr: 'select',
-          note: '查询按钮配置',
-          type: 'formbuttonType'
-        },
-        {
-          attr: 'reset',
-          note: '重置按钮配置',
-          type: 'formbuttonType'
-        },
-        {
-          attr: 'putOut',
-          note: '导出按钮配置',
-          type: 'formbuttonType'
-        },
-        {
-          attr: '组件暴露的属性和方法',
-          note: '',
-          type: ''
-        },
-        {
-          attr: 'formControl',
-          note: '获取表单dom',
-          type: 'dom'
-        },
-        {
-          attr: 'formModel',
-          note: '表单双向绑定对象',
+          attr: 'defaultValue',
+          note: '控件默认值,当控件label是下划线分开时，会被解析成一个数组值，每一段对应一个默认值',
           type: 'any'
         },
         {
-          attr: 'setFormModel()',
-          note: '设置表单项的值',
-          type: 'Function'
+          attr: 'formItemMeta.columnId',
+          note: '控件的ID,唯一标识',
+          type: 'string'
         },
         {
-          attr: 'resetForm()',
-          note: '重置表单的抛出事件',
-          type: 'Function'
+          attr: 'formItemMeta.label',
+          note: '表单label信息',
+          type: 'string'
         },
         {
-          attr: 'selectForm()',
-          note: '查询按钮的抛出事件',
-          type: 'Function'
+          attr: 'formItemMeta.controlType',
+          note: '表单控件类型，决定本项渲染成哪一种控件',
+          type: 'string'
         },
         {
-          attr: 'putOutForm()',
-          note: '导出按钮的抛出事件',
-          type: 'Function'
+          attr: 'formItemMeta.labelWidth',
+          note: '表单label的宽度，默认为auto自适应',
+          type: 'string'
         }
-      ];
+      ]);
+      const areaTableData = ref([
+        {
+          attr: 'autosize',
+          note: '设置文字输入类型的 autosize 属性使得根据内容自动调整的高度。',
+          type: '{ minRows: 2, maxRows: 4 }'
+        },
+        {
+          attr: 'rows',
+          note: '文本域高度',
+          type: 'number'
+        }
+      ]);
+      const switchTableData = ref([
+        {
+          attr: 'inlinePrompt',
+          note: '控制文本是否显示在点内',
+          type: 'boolean'
+        },
+        {
+          attr: 'activeText',
+          note: '开状态的文字描述',
+          type: 'string'
+        },
+        {
+          attr: 'inactiveText',
+          note: '关状态的文字描述',
+          type: 'string'
+        },
+        {
+          attr: 'style',
+          note: '修改开关背景颜色',
+          type: 'string'
+        }
+      ]);
       return {
-        code4,
-        buttonTableData,
-        formbuttonTypTableData,
-        formTableData
+        inputTableData,
+        routineTableData,
+        areaTableData,
+        switchTableData
       };
     }
   };

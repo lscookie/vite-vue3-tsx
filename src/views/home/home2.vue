@@ -91,8 +91,6 @@
               columnId: '100',
               label: '多行文本',
               controlType: 'text',
-              isClear: false,
-              title: '多行文本',
               labelWidth: 'auto'
             },
             colCount: 1,
@@ -106,8 +104,6 @@
               columnId: '101',
               label: '颜色选着器',
               controlType: 'color',
-              isClear: false,
-              title: '多行文本',
               labelWidth: 'auto'
             },
             size: 'default',
@@ -134,8 +130,6 @@
               columnId: '103',
               label: '多选框',
               controlType: 'checkbox',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto'
             },
             hasSlot: true,
@@ -148,8 +142,6 @@
               columnId: '104',
               label: '下拉框',
               controlType: 'select',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto',
               optionList: [
                 // { label: '11', value: '1' },
@@ -176,8 +168,6 @@
               columnId: '104',
               label: '下拉树',
               controlType: 'selectTree',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto',
               checkStrictly: true,
               optionList: [
@@ -260,8 +250,6 @@
               columnId: '105',
               label: '单选按钮',
               controlType: 'radios',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto',
               optionList: [
                 { label: '1', value: '1' },
@@ -288,8 +276,6 @@
               columnId: '106',
               label: '多行输入框',
               controlType: 'area',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto'
             },
             size: 'small',
@@ -301,8 +287,6 @@
               columnId: '107',
               label: '滑块',
               controlType: 'slider',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto'
             },
             size: 'small',
@@ -314,8 +298,6 @@
               columnId: '108',
               label: '数字输入框',
               controlType: 'number',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto'
             },
             size: 'small',
@@ -327,8 +309,6 @@
               columnId: '109',
               label: '多选按钮组',
               controlType: 'checkboxGroup',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto',
               optionList: [
                 { label: '框1', value: '1' },
@@ -346,8 +326,6 @@
               columnId: '110',
               label: '评分',
               controlType: 'rate',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto'
             },
             size: 'small',
@@ -359,8 +337,6 @@
               columnId: '110',
               label: '日期选择',
               controlType: 'date',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto',
               disabledData: [
                 { fun: 'min', params: -5 },
@@ -376,8 +352,6 @@
               columnId: '110',
               label: '日期选择',
               controlType: 'datetime',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto',
               disabledData: [
                 { fun: 'min', params: -5 },
@@ -403,8 +377,6 @@
               columnId: '110',
               label: '日期选择',
               controlType: 'datetime',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto',
               disabledData: [
                 { fun: 'min', params: -5 },
@@ -425,8 +397,6 @@
               columnId: '115',
               label: '日期范围选择',
               controlType: 'daterange',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto'
             },
             size: 'small',

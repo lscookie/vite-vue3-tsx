@@ -1,9 +1,5 @@
 <template>
   <div class="slot-block">
-    <div class="item-show-block">
-      <label>columnsNumber</label>
-      <el-slider v-model="formDemoJson1.columnsNumber" :min="1" :max="10"></el-slider>
-    </div>
     <formCore ref="formDemo1" :form-json="formDemoJson1"> </formCore>
     <div class="item-show-bottom">
       <el-button link type="primary" @click="CodeShow = !CodeShow"> 代码</el-button>
@@ -16,60 +12,43 @@
   import formCore from '@/components/formCore/formCore.vue';
   import { defineComponent, reactive, ref } from 'vue';
   import CodeComponent from '../codeMirror.vue';
-  import { code1 } from './code';
+  import { formItemCode2 } from './form-item-code';
 
   export default defineComponent({
-    name: 'Demo1',
+    name: 'FormItemDemo2',
     components: { formCore, CodeComponent },
     setup() {
       const CodeShow = ref(false);
-      const codeblock = ref(code1);
+      const codeblock = ref(formItemCode2);
       const formDemoJson1: formJsonType = reactive({
         columnsNumber: 2,
         labelWidth: 'auto',
         size: 'default',
         colOrder: {
-          text1: {
+          area0: {
             formItemMeta: {
-              columnId: '001',
-              label: '姓名',
-              controlType: 'text',
+              columnId: '005',
+              label: '多行输入框',
+              controlType: 'area',
               labelWidth: 'auto'
             },
-            colCount: 1,
+            colCount: 2,
             defaultValue: '',
-            placeholder: '请输入姓名'
+            placeholder: '请输入任意信息',
+            autosize: { minRows: 2, maxRows: 4 },
+            rows: 5
           },
-          text2: {
+          area1: {
             formItemMeta: {
-              columnId: '002',
-              label: 'text1',
-              controlType: 'text',
+              columnId: '006',
+              label: '自适应行高',
+              controlType: 'area',
               labelWidth: 'auto'
             },
-            colCount: 1,
+            colCount: 2,
             defaultValue: '',
-            placeholder: '请输入text1'
-          },
-          text3: {
-            formItemMeta: {
-              columnId: '003',
-              label: 'text2',
-              controlType: 'text'
-            },
-            colCount: 1,
-            defaultValue: '',
-            placeholder: '请输入text2'
-          },
-          text4: {
-            formItemMeta: {
-              columnId: '004',
-              label: 'text4',
-              controlType: 'text'
-            },
-            colCount: 1,
-            defaultValue: '',
-            placeholder: '请输入text4'
+            placeholder: '请输入任意信息',
+            autosize: { minRows: 2, maxRows: 4 }
           }
         },
         linkageMeta: {},

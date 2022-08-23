@@ -3,9 +3,9 @@
   <el-select
     :id="'c' + keyName + formItemMeta.columnId"
     v-model="value"
+    v-bind="$attrs"
     :name="'c' + formItemMeta.columnId"
     :size="size"
-    :clearable="formItemMeta.isClear"
     :multiple="false"
   >
     <el-option

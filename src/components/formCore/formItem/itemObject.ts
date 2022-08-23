@@ -64,6 +64,7 @@ type networkType = {
  * 表单项的配置参数对象
  */
 type formItem = {
+  [index: string]: any;
   /**
    * 控件ID
    */
@@ -76,14 +77,6 @@ type formItem = {
    * 控件类型
    */
   controlType: string;
-  /**
-   * 清除控件
-   */
-  isClear: boolean;
-  /**
-   * 控件标题
-   */
-  title: string;
   /**
    * 控件label的宽度
    */

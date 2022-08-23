@@ -28,7 +28,6 @@
             <slot :name="ctrId" :value="formModel">插槽内容缺失</slot>
           </template>
           <template v-else>
-            {{ item }}
             <component
               :is="getFormItemNode(item.formItemMeta.controlType)"
               :key-name="ctrId"

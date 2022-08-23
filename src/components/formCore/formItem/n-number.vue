@@ -6,7 +6,6 @@
     v-model="value"
     :name="'c' + formItemMeta.columnId"
     :size="size"
-    :clearable="formItemMeta.isClear"
   >
   </el-input-number>
 </template>

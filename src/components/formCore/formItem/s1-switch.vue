@@ -2,10 +2,10 @@
 <template>
   <el-switch
     :id="'c' + keyName + formItemMeta.columnId"
+    v-bind="$attrs"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
     :size="size"
-    :clearable="formItemMeta.isClear"
   >
     <!-- :active-icon="$icon ? $icon[extend['active-icon']] : ''"
     :inactive-icon="$icon ? $icon[extend['inactive-icon']] : ''" -->

@@ -2,11 +2,12 @@
 <template>
   <el-input
     :id="'c' + keyName + formItemMeta.columnId"
+    v-bind="$attrs"
     v-model="value"
     type="textarea"
     :name="'c' + formItemMeta.columnId"
-    :rows="formItemMeta.rows"
     :size="size"
+    :rows="$props?.rows"
     @blur="run"
     @change="run"
     @clear="run"
@@ -33,6 +34,10 @@
       keyName: {
         type: String,
         default: ''
+      },
+      rows: {
+        type: Number,
+        default: 2
       },
       modelValue: [String, Number],
       ...itemProps // 基础属性,

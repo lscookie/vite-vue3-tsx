@@ -30,8 +30,6 @@
               columnId: '011',
               label: '姓名',
               controlType: 'text',
-              isClear: false,
-              title: '姓名',
               labelWidth: 'auto'
             },
             size: 'small',
@@ -44,8 +42,6 @@
               columnId: '012',
               label: 'text1',
               controlType: 'text',
-              isClear: false,
-              title: 'text1',
               labelWidth: 'auto'
             },
             size: 'large',
@@ -57,9 +53,7 @@
             formItemMeta: {
               columnId: '013',
               label: 'text2',
-              controlType: 'text',
-              isClear: false,
-              title: 'text2'
+              controlType: 'text'
             },
             colCount: 3,
             defaultValue: '',
@@ -69,9 +63,7 @@
             formItemMeta: {
               columnId: '014',
               label: 'text4',
-              controlType: 'text',
-              isClear: false,
-              title: 'text4'
+              controlType: 'text'
             },
             colCount: 1,
             defaultValue: '',

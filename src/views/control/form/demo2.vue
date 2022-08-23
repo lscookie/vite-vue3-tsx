@@ -38,9 +38,7 @@
             formItemMeta: {
               columnId: '005',
               label: 'text2',
-              controlType: 'text',
-              isClear: false,
-              title: 'text2'
+              controlType: 'text'
             },
             colCount: 1,
             defaultValue: '',
@@ -51,8 +49,6 @@
               columnId: '006',
               label: '姓名',
               controlType: 'text',
-              isClear: false,
-              title: '姓名',
               labelWidth: 'auto'
             },
             colCount: 1,

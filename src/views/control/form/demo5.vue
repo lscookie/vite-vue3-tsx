@@ -38,8 +38,6 @@
               columnId: '015',
               label: '姓名',
               controlType: 'text',
-              isClear: false,
-              title: '姓名',
               labelWidth: 'auto'
             },
             colCount: 1,
@@ -51,8 +49,6 @@
               columnId: '016',
               label: '插槽测试',
               controlType: '',
-              isClear: false,
-              title: '别名',
               labelWidth: 'auto'
             },
             hasSlot: true,

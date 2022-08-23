@@ -43,8 +43,6 @@
               columnId: '020',
               label: '姓名',
               controlType: 'text',
-              isClear: false,
-              title: '姓名',
               labelWidth: 'auto'
             },
             colCount: 1,

@@ -1,16 +1,8 @@
 <template>
   <div class="slot-block">
-    <div class="item-show-block">
-      <label>size</label>
-      <el-select v-model="formDemoJson3.size">
-        <el-option label="default" value="default"></el-option>
-        <el-option label="small" value="small"></el-option>
-        <el-option label="large" value="large"></el-option>
-      </el-select>
-    </div>
-    <formCore ref="formDemo1" :form-json="formDemoJson3"> </formCore>
+    <formCore ref="formDemo1" :form-json="formDemoJson1"> </formCore>
     <div class="item-show-bottom">
-      <el-button link @click="CodeShow = !CodeShow"> 代码</el-button>
+      <el-button link type="primary" @click="CodeShow = !CodeShow"> 代码</el-button>
     </div>
     <CodeComponent v-show="CodeShow" :code="codeblock" :height="600"></CodeComponent>
   </div>
@@ -19,71 +11,76 @@
   import { formJsonType } from '@/components/formCore/formItem/itemObject';
   import formCore from '@/components/formCore/formCore.vue';
   import { defineComponent, reactive, ref } from 'vue';
-  import { code3 } from './code';
   import CodeComponent from '../codeMirror.vue';
+  import { formItemCode1 } from './form-item-code';
 
   export default defineComponent({
-    name: 'Demo2',
+    name: 'FormItemDemo1',
     components: { formCore, CodeComponent },
     setup() {
       const CodeShow = ref(false);
-      const codeblock = ref(code3);
-      const formDemoJson3: formJsonType = reactive({
-        columnsNumber: 1,
+      const codeblock = ref(formItemCode1);
+      const formDemoJson1: formJsonType = reactive({
+        columnsNumber: 2,
         labelWidth: 'auto',
         size: 'default',
         colOrder: {
-          default: {
+          text0: {
             formItemMeta: {
-              columnId: '007',
-              label: 'default',
+              columnId: '001',
+              label: '金额',
               controlType: 'text',
               labelWidth: 'auto'
             },
-            size: 'default',
             colCount: 1,
             defaultValue: '',
-            placeholder: '请输入姓名'
+            placeholder: '请输入金额',
+            clearable: true,
+            formatter: (value: any) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+            parser: (value: any) => value.replace(/\$\s?|(,*)/g, '')
           },
-          small: {
+          text1: {
             formItemMeta: {
-              columnId: '008',
-              label: 'small',
+              columnId: '002',
+              label: 'text1',
               controlType: 'text',
               labelWidth: 'auto'
             },
-            size: 'small',
             colCount: 1,
             defaultValue: '',
-            placeholder: '请输入text1'
+            placeholder: '请输入text1',
+            disabled: true
           },
-          large: {
+          text2: {
             formItemMeta: {
-              columnId: '009',
-              label: 'large',
-              controlType: 'text'
-            },
-            size: 'large',
-            colCount: 1,
-            defaultValue: '',
-            placeholder: '请输入text2'
-          },
-          test: {
-            formItemMeta: {
-              columnId: '110',
-              label: 'test',
+              columnId: '003',
+              label: 'text2',
               controlType: 'text'
             },
             colCount: 1,
+            defaultValue: '默认值',
+            placeholder: '请输入text2',
+            prefixIcon: 'Aim',
+            suffixIcon: 'Aim'
+          },
+          text3: {
+            formItemMeta: {
+              columnId: '004',
+              label: '密码',
+              controlType: 'text'
+            },
+            colCount: 1,
             defaultValue: '',
-            placeholder: '请输入text4'
+            placeholder: '请输入密码',
+            showPassword: true
           }
         },
         linkageMeta: {},
-        ruleMeta: {}
+        ruleMeta: {},
+        button: {}
       });
       return {
-        formDemoJson3,
+        formDemoJson1,
         CodeShow,
         codeblock
       };

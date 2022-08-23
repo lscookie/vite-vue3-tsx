@@ -2,10 +2,10 @@
 <template>
   <el-radio-group
     :id="'c' + keyName + formItemMeta.columnId"
+    v-bind="$attrs"
     v-model="value"
     :name="'c' + formItemMeta.columnId"
     :size="size"
-    :clearable="formItemMeta.isClear"
   >
     <el-radio
       v-for="item in localOptionList.value"
