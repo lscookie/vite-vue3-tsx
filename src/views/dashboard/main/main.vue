@@ -63,14 +63,9 @@
 </script>
 
 <style lang="less">
-  // .el-button {
-  //   padding: 24px var(--btn-padding);
-  //   margin: var(--btn-margin);
-  //   background-color: var(--btn-bg-color) !important;
-  //   border-color: var(--btn-border-color) !important;
-  //   border-radius: var(--btn-border-radius);
-  //   color: var(--btn-text-color);
-  // }
+  .el-button {
+    padding: var(--btn-padding-f) var(--btn-padding-s);
+  }
   .animation-direction {
     animation-direction: reverse;
   }

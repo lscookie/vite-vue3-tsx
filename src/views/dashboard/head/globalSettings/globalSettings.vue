@@ -168,16 +168,26 @@
               >
               </color-select>
             </el-form-item>
-            <!-- <el-form-item label="内边距">
+            <el-form-item label="内上下边距">
               <el-slider
-                v-model="btnPadding"
+                v-model="btnPaddingF"
                 :min="0"
                 :max="50"
                 show-input
                 size="small"
-                @input="styleChangeNumber('SET_BUTTON_STYLE', 'btnPadding', btnPadding)"
+                @input="styleChangeNumber('SET_BUTTON_STYLE', 'btnPaddingF', btnPaddingF)"
               />
-            </el-form-item> -->
+            </el-form-item>
+            <el-form-item label="内左右边距">
+              <el-slider
+                v-model="btnPaddingS"
+                :min="0"
+                :max="50"
+                show-input
+                size="small"
+                @input="styleChangeNumber('SET_BUTTON_STYLE', 'btnPaddingS', btnPaddingS)"
+              />
+            </el-form-item>
             <el-form-item label="圆角">
               <el-slider
                 v-model="elBorderRadiusBase"
@@ -435,7 +445,8 @@
       const mainBlockRadios = ref(0);
       const mainBlockPadding = ref(0);
 
-      const btnPadding = ref(0);
+      const btnPaddingF = ref(0);
+      const btnPaddingS = ref(0);
       // const btnBorderRadius = ref(0);
       const elBorderRadiusBase = ref(0);
       const btnMargin = ref(0);
@@ -462,13 +473,16 @@
           );
 
           // button
-          btnPadding.value = Number(
-            store.state.menu.buttonStyle.btnPadding.replace(/[^\d^\.]/g, '')
+          btnPaddingF.value = Number(
+            store.state.menu.buttonStyle.btnPaddingF.replace(/[^\d^\.]/g, '')
+          );
+          btnPaddingS.value = Number(
+            store.state.menu.buttonStyle.btnPaddingS.replace(/[^\d^\.]/g, '')
           );
           elBorderRadiusBase.value = Number(
             store.state.menu.buttonStyle.elBorderRadiusBase.replace(/[^\d^\.]/g, '')
           );
-          btnMargin.value = Number(store.state.menu.buttonStyle.btnMargin.replace(/[^\d^\.]/g, ''));
+          // btnMargin.value = Number(store.state.menu.buttonStyle.btnMargin.replace(/[^\d^\.]/g, ''));
 
           // table
           tableHeadFontWeigth.value = Number(
@@ -509,7 +523,8 @@
         myMainSeadStyle,
         allLabelWidth,
         myButtonSeadStyle,
-        btnPadding,
+        btnPaddingF,
+        btnPaddingS,
         elBorderRadiusBase,
         btnMargin,
         myTableSeadStyle,

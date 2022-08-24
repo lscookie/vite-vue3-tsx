@@ -55,7 +55,8 @@ const menu = {
       elColorPrimary: '',
       btnBorderColor: '',
       elColorWhite: '',
-      btnPadding: '',
+      btnPaddingF: '',
+      btnPaddingS: '',
       elBorderRadiusBase: '',
       btnMargin: '',
       btnTextColor: ''
