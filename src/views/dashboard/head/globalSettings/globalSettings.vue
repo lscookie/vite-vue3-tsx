@@ -150,21 +150,25 @@
           </el-form>
         </div>
       </div>
-      <!-- <div class="theme-block">
+      <div class="theme-block">
         <div class="theme-block-title"><span>按钮样式</span></div>
         <div>
           <el-form :label-width="allLabelWidth">
             <el-form-item label="背景颜色">
               <color-select
-                v-model:selectColor="myButtonSeadStyle.btnBgColor"
+                v-model:selectColor="myButtonSeadStyle.elColorPrimary"
                 :color-list="colorList"
                 @selectChange="
-                  styleChange('SET_BUTTON_STYLE', 'btnBgColor', myButtonSeadStyle.btnBgColor)
+                  styleChange(
+                    'SET_BUTTON_STYLE',
+                    'elColorPrimary',
+                    myButtonSeadStyle.elColorPrimary
+                  )
                 "
               >
               </color-select>
             </el-form-item>
-            <el-form-item label="内边距">
+            <!-- <el-form-item label="内边距">
               <el-slider
                 v-model="btnPadding"
                 :min="0"
@@ -173,18 +177,20 @@
                 size="small"
                 @input="styleChangeNumber('SET_BUTTON_STYLE', 'btnPadding', btnPadding)"
               />
-            </el-form-item>
+            </el-form-item> -->
             <el-form-item label="圆角">
               <el-slider
-                v-model="btnBorderRadius"
+                v-model="elBorderRadiusBase"
                 :min="0"
                 :max="40"
                 show-input
                 size="small"
-                @input="styleChangeNumber('SET_BUTTON_STYLE', 'btnBorderRadius', btnBorderRadius)"
+                @input="
+                  styleChangeNumber('SET_BUTTON_STYLE', 'elBorderRadiusBase', elBorderRadiusBase)
+                "
               />
             </el-form-item>
-            <el-form-item label="外边距">
+            <!-- <el-form-item label="外边距">
               <el-slider
                 v-model="btnMargin"
                 :min="0"
@@ -193,8 +199,8 @@
                 size="small"
                 @input="styleChangeNumber('SET_BUTTON_STYLE', 'btnMargin', btnMargin)"
               />
-            </el-form-item>
-            <el-form-item label="边框颜色">
+            </el-form-item> -->
+            <!-- <el-form-item label="边框颜色">
               <color-select
                 v-model:selectColor="myButtonSeadStyle.btnBorderColor"
                 :color-list="colorList"
@@ -207,13 +213,13 @@
                 "
               >
               </color-select>
-            </el-form-item>
+            </el-form-item> -->
             <el-form-item label="字体颜色">
               <color-select
-                v-model:selectColor="myButtonSeadStyle.btnTextColor"
+                v-model:selectColor="myButtonSeadStyle.elColorWhite"
                 :color-list="colorList"
                 @selectChange="
-                  styleChange('SET_BUTTON_STYLE', 'btnTextColor', myButtonSeadStyle.btnTextColor)
+                  styleChange('SET_BUTTON_STYLE', 'elColorWhite', myButtonSeadStyle.elColorWhite)
                 "
               >
               </color-select>
@@ -221,7 +227,7 @@
           </el-form>
         </div>
       </div>
-      <div class="theme-block">
+      <!-- <div class="theme-block">
         <div class="theme-block-title"><span>表格样式</span></div>
         <div>
           <el-form :label-width="allLabelWidth">
@@ -417,7 +423,12 @@
         { color: '#ff5522' },
         { color: '#f2f2f3' },
         { color: '#5172dc' },
-        { color: '#ffffff' }
+        { color: '#ffffff' },
+        { color: '#1c5bea' },
+        { color: '#2b68f1' },
+        { color: '#114fde' },
+        { color: '#b2b8c7' },
+        { color: '#f0f0f0' }
       ]);
 
       const mainOutBlockPadding = ref(0);
@@ -425,7 +436,8 @@
       const mainBlockPadding = ref(0);
 
       const btnPadding = ref(0);
-      const btnBorderRadius = ref(0);
+      // const btnBorderRadius = ref(0);
+      const elBorderRadiusBase = ref(0);
       const btnMargin = ref(0);
 
       const tableHeadFontWeigth = ref(0);
@@ -453,8 +465,8 @@
           btnPadding.value = Number(
             store.state.menu.buttonStyle.btnPadding.replace(/[^\d^\.]/g, '')
           );
-          btnBorderRadius.value = Number(
-            store.state.menu.buttonStyle.btnBorderRadius.replace(/[^\d^\.]/g, '')
+          elBorderRadiusBase.value = Number(
+            store.state.menu.buttonStyle.elBorderRadiusBase.replace(/[^\d^\.]/g, '')
           );
           btnMargin.value = Number(store.state.menu.buttonStyle.btnMargin.replace(/[^\d^\.]/g, ''));
 
@@ -498,7 +510,7 @@
         allLabelWidth,
         myButtonSeadStyle,
         btnPadding,
-        btnBorderRadius,
+        elBorderRadiusBase,
         btnMargin,
         myTableSeadStyle,
         tableHeadFontSize,

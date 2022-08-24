@@ -8,7 +8,7 @@ export default function initStyleConfig() {
   const mySeadStyle = computed(() => store.state.menu.headStyle);
   const myMenuStyle = computed(() => store.state.menu.menuStyle);
   const myMainStyle = computed(() => store.state.menu.mainStyle);
-  // const myButtonStyle = computed(() => store.state.menu.buttonStyle);
+  const myButtonStyle = computed(() => store.state.menu.buttonStyle);
   // const myTableStyle = computed(() => store.state.menu.tableStyle);
   const initSettingFun = () => {
     let styleObject: any = {};
@@ -29,11 +29,11 @@ export default function initStyleConfig() {
     });
     store.commit('SET_MAIN_STYLE', Object.assign({}, styleObject));
 
-    // styleObject = {};
-    // Object.keys(myButtonStyle.value).forEach((item: any) => {
-    //   styleObject[item] = getStyleByClassName('dashboard-button', item);
-    // });
-    // store.commit('SET_BUTTON_STYLE', Object.assign({}, styleObject));
+    styleObject = {};
+    Object.keys(myButtonStyle.value).forEach((item: any) => {
+      styleObject[item] = getStyleByClassName('dashboard-button', item);
+    });
+    store.commit('SET_BUTTON_STYLE', Object.assign({}, styleObject));
 
     // styleObject = {};
     // Object.keys(myTableStyle.value).forEach((item: any) => {

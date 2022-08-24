@@ -4,7 +4,7 @@
       <el-button @click="changeSpan">修改</el-button>
     </template>
     <template #right>
-      <el-button @click="changeSpan">动画</el-button>
+      <el-button type="primary" @click="changeSpan">动画</el-button>
       <container class="parent-class">
         <div>Example</div>
       </container>

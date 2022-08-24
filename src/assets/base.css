@@ -59,12 +59,23 @@
   /* 边框颜色 */
   --btn-border-color: #1c5bea;
   /* 内边距间隔 */
-  --btn-padding: 24px;
-  /* --btn-text-color: #fff; */
+  --btn-padding: 12px 24px;
+  --btn-text-color: #fff;
   /* 圆角 */
   --btn-border-radius: 5px;
   /* 外边距颜色 */
   --btn-margin: 5px;
+  --el-color-primary: #1c5bea;
+  --el-color-primary-light-3: #2b68f1;
+  --el-color-primary-light-5: #a0cfff;
+  --el-color-primary-light-7: #c6e2ff;
+  --el-color-primary-light-8: #d9ecff;
+  --el-color-primary-light-9: #ecf5ff;
+  --el-color-primary-dark-2: #114fde;
+  /* --el-border-width: 1px; */
+  /* --el-border-style: solid; */
+  --el-color-white: #ffffff;
+  --el-border-radius-base: 5px;
 }
 
 .dashboard-table {

@@ -51,10 +51,12 @@ const menu = {
       mainBlockPadding: ''
     },
     buttonStyle: {
-      btnBgColor: '',
+      // btnBgColor: '',
+      elColorPrimary: '',
       btnBorderColor: '',
+      elColorWhite: '',
       btnPadding: '',
-      btnBorderRadius: '',
+      elBorderRadiusBase: '',
       btnMargin: '',
       btnTextColor: ''
     },

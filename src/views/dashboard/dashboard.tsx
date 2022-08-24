@@ -30,7 +30,7 @@ export default defineComponent({
             </el-header>
             <el-main
               // class={[dashboardStyle.main, 'dashboard-main', 'dashboard-button', 'dashboard-table']}
-              class={[dashboardStyle.main, 'dashboard-main', 'dashboard-table']}
+              class={[dashboardStyle.main, 'dashboard-main', 'dashboard-button', 'dashboard-table']}
             >
               <dashboard-main></dashboard-main>
             </el-main>

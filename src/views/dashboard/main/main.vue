@@ -64,7 +64,7 @@
 
 <style lang="less">
   // .el-button {
-  //   padding: 19px var(--btn-padding);
+  //   padding: 24px var(--btn-padding);
   //   margin: var(--btn-margin);
   //   background-color: var(--btn-bg-color) !important;
   //   border-color: var(--btn-border-color) !important;
